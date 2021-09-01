@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const { envConstants: { HOST, PORT, MONGOOSE_DB } } = require('./constants');
+const { errorMessages } = require('./errors');
 const { loginRouter, registrationRouter } = require('./routes');
 
 const app = express();
@@ -21,5 +22,5 @@ app.use('/login', loginRouter);
 app.use('/registration', registrationRouter);
 
 app.listen(PORT, HOST, () => {
-  console.log(`App listem ${PORT}`);
+  console.log(`App listen ${PORT}`);
 })

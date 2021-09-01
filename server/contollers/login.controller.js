@@ -1,3 +1,4 @@
+const { responseCodes } = require('../constants');
 const { passwordHesher } = require('../services');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
 
       await passwordHesher.compare(hashedPassword, password);
 
-      res.json('Ви увійшли в особистий кабінет')
+      res.status(responseCodes.OK).json('OK');
     } catch (e) {
       next(e);
     }

@@ -1,3 +1,4 @@
+const { responseCodes } = require('../constants');
 const { UserModel } = require('../database');
 const { passwordHesher } = require('../services');
 
@@ -16,7 +17,7 @@ module.exports = {
         password: hashedPassword
       });
 
-      res.json('Ви успішно зареєструвались.');
+      res.status(responseCodes.CREATED).json('OK');
     } catch (e) {
       next(e);
     }

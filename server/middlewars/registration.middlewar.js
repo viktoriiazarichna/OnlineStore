@@ -1,4 +1,6 @@
+const { responseCodes } = require('../constants');
 const { UserModel } = require('../database');
+const { ErrorHandler, errorMessages }  = require('../errors');
 const { registrationValidator } = require('../validators');
 
 module.exports = {
@@ -9,7 +11,11 @@ module.exports = {
       const user = await UserModel.findOne({ email });
 
       if (user) {
-        throw new Error('this email are busy');
+        throw new ErrorHandler(
+          responseCodes.AUTHENTICATION_ERROR,
+          errorMessages.EMAIL_BUSY.message,
+          errorMessages.EMAIL_BUSY.code
+        );
       }
 
       next();
@@ -23,7 +29,11 @@ module.exports = {
       const { error } = registrationValidator.createUser.validate(req.body.regUserData);
 
       if (error) {
-        throw new Error (error);
+        throw new Error (
+          responseCodes.AUTHENTICATION_ERROR,
+          errorMessages.FIELD_NOT_FILLED.message(error.details[0].message),
+          errorMessages.FIELD_NOT_FILLED.code
+        );
       }
 
       next();
