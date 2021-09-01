@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   const registration = async () => {
-    await request('/registration', 'POST', { regUserData });
+    await request('http://localhost:5000/registration', 'POST', { regUserData });
 
     setRegUserData({
       username: '',

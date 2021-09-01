@@ -17,7 +17,7 @@ export default function Login() {
   };
 
   const login = async () => {
-    await request('/login', 'POST', { logUserData });
+    await request('http://localhost:5000/login', 'POST', { logUserData });
 
     setLogUserData({
       email: '',
