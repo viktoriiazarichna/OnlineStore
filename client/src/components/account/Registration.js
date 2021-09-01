@@ -36,9 +36,9 @@ export default function Login() {
       <h2>Реєстрація</h2>
       <input value={regUserData.name} onChange={updateUserData} type="text" name="username" placeholder="ПІБ" />
       <br />
-      <input value={regUserData.email} onChange={updateUserData} type="email" name="email" placeholder="емайл" />
+      <input value={regUserData.email} onChange={updateUserData} type="text" name="email" placeholder="емайл" />
       <br />
-      <input value={regUserData.phone} onChange={updateUserData} type="text" name="phone" placeholder="телефон" />
+      <input value={regUserData.phone} onChange={updateUserData} type="number" name="phone" placeholder="телефон" />
       <br />
       <input value={regUserData.address} onChange={updateUserData} type="text" name="address" placeholder="адреса" />
       <br />

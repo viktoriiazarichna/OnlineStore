@@ -1,4 +1,5 @@
 module.exports = {
   databaseConstants: require('./database.constants'),
-  envConstants: require('./env.contants')
+  envConstants: require('./env.contants'),
+  regexp: require('./regexp')
 };

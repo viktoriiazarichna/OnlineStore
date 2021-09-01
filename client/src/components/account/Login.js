@@ -28,7 +28,7 @@ export default function Login() {
   return (
     <div>
       <h2>Вхід</h2>
-      <input value={logUserData.email} onChange={updateUserData} type="email" name="email" placeholder="емайл" />
+      <input value={logUserData.email} onChange={updateUserData} type="text" name="email" placeholder="емайл" />
       <br />
       <input value={logUserData.password} onChange={updateUserData} type="password" name="password" placeholder="пароль" />
       <br />
