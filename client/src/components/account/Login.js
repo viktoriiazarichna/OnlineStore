@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
+import { httpRequest } from '../../helpers/http.helper';
+
 export default function Login() {
+  const { request } = httpRequest();
+
   const [logUserData, setLogUserData] = useState({
     email: '',
     password: ''
@@ -12,8 +16,8 @@ export default function Login() {
     setLogUserData({...logUserData, [name]: value });
   };
 
-  const login = () => {
-    console.log(logUserData);
+  const login = async () => {
+    await request('/login', 'POST', { logUserData });
 
     setLogUserData({
       email: '',

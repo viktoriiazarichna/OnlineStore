@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
+import { httpRequest } from '../../helpers/http.helper';
+
 export default function Login() {
+  const { request } = httpRequest();
+
   const [regUserData, setRegUserData] = useState({
     username: '',
     email: '',
@@ -15,8 +19,8 @@ export default function Login() {
     setRegUserData({...regUserData, [name]: value });
   };
 
-  const registration = () => {
-    console.log(regUserData);
+  const registration = async () => {
+    await request('/registration', 'POST', { regUserData });
 
     setRegUserData({
       username: '',
