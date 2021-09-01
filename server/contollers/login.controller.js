@@ -1,14 +1,12 @@
-const { UserModel } = require('../database');
 const { passwordHesher } = require('../services');
 
 module.exports = {
   loginUser: async (req, res, next) => {
     try {
-      const { email, password } = req.body.logUserData;
+      const { password: hashedPassword } = req.user;
+      const { password } = req.body.logUserData;
 
-      const user = await UserModel.findOne({ email }).select('+password');;
-
-      await passwordHesher.compare(user.password, password);
+      await passwordHesher.compare(hashedPassword, password);
 
       res.json('Ви увійшли в особистий кабінет')
     } catch (e) {
