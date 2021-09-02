@@ -4,3 +4,6 @@ client/package-lock.json
 server/node_modules
 server/package-lock.json
 server/.env
+
+DB_lookup.js
+DB_Products-Categories.js
