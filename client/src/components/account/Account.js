@@ -13,7 +13,7 @@ export default function Account() {
 
       <Link to="/login"></Link>
       <br />
-      <Link to="/registration">Зареєструватись</Link>
+      <Link to="/registration">зареєструватись</Link>
     </Router>
   )
 }
