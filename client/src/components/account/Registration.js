@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { httpRequest } from '../../helpers/http.helper';
+import { httpRequest } from '../../helpers';
 
 export default function Login() {
   const { request } = httpRequest();

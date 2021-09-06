@@ -4,4 +4,4 @@ import Registration from './Registration';
 export {
   Login,
   Registration
-}
+};
