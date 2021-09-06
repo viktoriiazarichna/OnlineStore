@@ -1,14 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
-export default function CategoriesPage () {
-    return (
-        <div>
-            <h1> Categories Page </h1>
-            <h3>Фрукти</h3>
-            <h3>Овочі</h3>
-            <h3>Зелень</h3>
-        </div>
-    )
+import { httpRequest } from '../../helpers/http.helper';
+
+export default function Categories() {
+  const { request } = httpRequest();
+
+  const [categories, setCategories] = useState([]);
+
+  const getAllCategories = async () => {
+    const data = await request('http://localhost:5000/categories');
+
+    setCategories(data);
+  }
+
+  useEffect(() => {
+    getAllCategories();
+  }, []);
+
+  return (
+    <div>
+      <h1> Categories Page </h1>
+      {categories.map(category => (
+        <div key={category._id}> {category.name} </div> 
+      ))}
+    </div>
+  )
 }
+
 
 
