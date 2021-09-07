@@ -1,0 +1,15 @@
+
+header, footer {
+    padding-left: 50px;
+}
+.headerLink {
+    text-decoration: none;
+    color: black;
+    padding-left: 20px;
+}
+#mainTitle {
+    text-align: center;
+}
+#cart {
+    margin-left: 10px;
+}
