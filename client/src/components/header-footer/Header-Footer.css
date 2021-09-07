@@ -1,16 +1,13 @@
-.headerBlock {
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-}
-.headerLinkBlock {
-  display: flex;
-  width: 70%;
+#menu {
+  margin-left: 5%;
 }
 .headerLink {
   text-decoration: none;
   color: black;
 }
-.mainTitle {
+#mainTitle {
   text-align: center;
+}
+#cart {
+  margin-left: 10px;
 }
