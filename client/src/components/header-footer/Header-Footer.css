@@ -1,0 +1,16 @@
+.headerBlock {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.headerLinkBlock {
+  display: flex;
+  width: 70%;
+}
+.headerLink {
+  text-decoration: none;
+  color: black;
+}
+.mainTitle {
+  text-align: center;
+}
