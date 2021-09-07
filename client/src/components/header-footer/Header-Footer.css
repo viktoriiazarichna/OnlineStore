@@ -1,5 +1,5 @@
-#menu {
-  margin-left: 5%;
+header, footer {
+  padding-left: 50px;
 }
 .headerLink {
   text-decoration: none;

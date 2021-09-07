@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+import './Categories.css';
 
 import { httpRequest } from '../../helpers';
 
@@ -18,14 +20,16 @@ export default function Categories() {
   }, []);
 
   return (
-    <div>
-      <h1> Categories Page </h1>
+    <div id={'categoies'}>
       {categories.map(category => (
-        <div key={category._id}> {category.name} </div> 
+        <Link to={`/${category.nameEnglish}`} key={category._id} >
+          <div className={'oneCategory'}>
+            <h3 className={'categoryName'}> {category.name} </h3>
+          </div> 
+        </Link>
       ))}
     </div>
   )
 }
-
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './MainPage.css';
 
 import { Account } from '../account';
 import { Header, Footer } from '../header-footer';
@@ -10,10 +11,15 @@ export default function MainPage() {
     <div>
       <Router>
         <Header />
-        <Switch>
-          <Route path={'/login'}> <Account /> </Route>
-          <Route path={'/'}> <Categories /> </Route>
-        </Switch>
+        <main>
+          <Switch>
+            <Route path={'/login'}> <Account /> </Route>
+            <Route path={'/fruits'}> Фрукти </Route>
+            <Route path={'/vegetables'}> Овочі </Route>
+            <Route path={'/greens'}> Зелень </Route>
+            <Route path={'/'}> <Categories /> </Route>
+          </Switch>
+        </main>
       </Router>
       <Footer />
     </div>

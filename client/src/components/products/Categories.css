@@ -1,0 +1,12 @@
+#categoies {
+  display: flex;
+  justify-content: space-around;
+}
+.oneCategory {
+  width: 32%;
+}
+.categoryName, a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
