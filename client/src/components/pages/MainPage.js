@@ -7,6 +7,8 @@ import { Header, Footer } from '../header-footer';
 import { Categories } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
 
+import {Menu} from '../menu';
+
 export default function MainPage() {
   return (
     <div>
@@ -29,6 +31,8 @@ export default function MainPage() {
         
         <Footer />
       </Router>
+
+      <Menu />
     </div>
   )
 }
