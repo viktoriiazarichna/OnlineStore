@@ -3,7 +3,8 @@ import './Menu.css';
 
 import { httpRequest } from '../../helpers';
 
-export default function Menu() {
+export default function Menu(props) {
+  const {isVisible} = props;
   const { request } = httpRequest();
 
   const [categories, setCategories] = useState([]);
@@ -19,8 +20,8 @@ export default function Menu() {
   }, []);
 
   return (
-    <nav id={'menu'}>
-      <ul>
+    <nav >
+      <ul className={`menu ${isVisible ? 'active' : ''}`} >
         {categories.map(category => <li className={'category'} key={category._id}> {category.name} </li> )}
       </ul>
     </nav>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './MainPage.css';
 
@@ -7,15 +7,15 @@ import { Header, Footer } from '../header-footer';
 import { Categories } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
 
-import {Menu} from '../menu';
-
 export default function MainPage() {
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <div>
       <Router>
-        <Header />
+        <Header isVisible={isVisible} setIsVisible={setIsVisible} />
 
-        <main>
+        <main className={isVisible ? 'transparentGrey' : ''}>
           <Switch>
             <Route path={'/login'}> <Account /> </Route>
             <Route path={'/fruits'}> Фрукти </Route>
@@ -29,10 +29,8 @@ export default function MainPage() {
           </Switch>
         </main>
         
-        <Footer />
+        <Footer isVisible={isVisible} />
       </Router>
-
-      <Menu />
     </div>
   )
 }

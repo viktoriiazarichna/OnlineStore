@@ -3,3 +3,6 @@ main {
   width: 80%;
   display: block;
 }
+.transparentGrey {
+  background: rgb(192, 192, 192, 0.5);
+}

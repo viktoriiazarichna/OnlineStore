@@ -1,6 +1,12 @@
 header, footer {
   padding: 0 50px;
 }
+#menuButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
 .headerLink {
   text-decoration: none;
   color: black;
@@ -10,4 +16,7 @@ header, footer {
 }
 #cart {
   margin-left: 10px;
+}
+.transparentGreen {
+  background: rgb(34, 84, 84, 0.5);
 }

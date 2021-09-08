@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header-Footer.css';
 
-export default function Header() {
+import { Menu } from '../menu';
+
+export default function Header(props) {
+  const { isVisible, setIsVisible } = props;
+
+  const handleOpenMenu = () => {
+    setIsVisible(!isVisible);
+  }
+
   return (
     <header>
-      <span id={'menu'}> menu </span>
+      <button id={'menuButton'} onClick={handleOpenMenu}> Меню </button>
+      <Menu isVisible={isVisible}/> 
+
       <h1 id={'mainTitle'}>
         <Link to={'/'} className={'headerLink'}> Вега-лавка </Link>
       </h1>
+
       <div>
         <Link to={'/login'} className={'headerLink'}> Увійти </Link>
         <span id={'cart'}>cart:0</span>
