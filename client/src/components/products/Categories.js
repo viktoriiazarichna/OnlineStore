@@ -1,19 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Categories.css';
 
-import { httpRequest } from '../../helpers';
+import { MainContext } from '../context';
 
 export default function Categories() {
-  const { request } = httpRequest();
-
-  const [categories, setCategories] = useState([]);
-
-  const getAllCategories = async () => {
-    const data = await request('http://localhost:5000/categories');
-
-    setCategories(data);
-  }
+  const {categories, getAllCategories} = useContext(MainContext);
 
   useEffect(() => {
     getAllCategories();

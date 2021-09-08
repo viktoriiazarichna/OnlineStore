@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
 
-import { httpRequest } from '../../helpers';
+import { MainContext } from '../context';
 
 export default function Menu(props) {
-  const {isVisible} = props;
-  const { request } = httpRequest();
-
-  const [categories, setCategories] = useState([]);
-
-  const getAllCategories = async () => {
-    const data = await request('http://localhost:5000/categories');
-
-    setCategories(data);
-  }
+  const { isVisible } = props;
+  const { categories, getAllCategories } = useContext(MainContext);
 
   useEffect(() => {
     getAllCategories();

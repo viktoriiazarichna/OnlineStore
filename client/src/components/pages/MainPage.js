@@ -6,12 +6,14 @@ import { Account } from '../account';
 import { Header, Footer } from '../header-footer';
 import { Categories } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
+import { MainContextProvider } from '../context';
 
 export default function MainPage() {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
     <div>
+    <MainContextProvider>
       <Router>
         <Header isVisible={isVisible} setIsVisible={setIsVisible} />
 
@@ -31,6 +33,7 @@ export default function MainPage() {
         
         <Footer isVisible={isVisible} />
       </Router>
+    </MainContextProvider>
     </div>
   )
 }
