@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Menu.css';
 
 import { httpRequest } from '../../helpers';
@@ -22,7 +23,11 @@ export default function Menu(props) {
   return (
     <nav >
       <ul className={`menu ${isVisible ? 'active' : ''}`} >
-        {categories.map(category => <li className={'category'} key={category._id}> {category.name} </li> )}
+        {categories.map(category => (
+          <li className={'category'} key={category._id}>
+            <Link to={`/${category.nameEnglish}`}> {category.name} </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   )

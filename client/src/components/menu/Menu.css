@@ -8,6 +8,7 @@
   background: rgb(34, 84, 84);
   padding: 30px;
   margin-left: 50px;
+  width: 100px;
 }
 
 .menu.active {
