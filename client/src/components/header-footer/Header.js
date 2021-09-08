@@ -7,7 +7,7 @@ export default function Header() {
     <header>
       <span id={'menu'}> menu </span>
       <h1 id={'mainTitle'}>
-        <Link to={'/'} className={'headerLink'}> Еко-лавка </Link>
+        <Link to={'/'} className={'headerLink'}> Вега-лавка </Link>
       </h1>
       <div>
         <Link to={'/login'} className={'headerLink'}> Увійти </Link>

@@ -9,26 +9,26 @@ import { Payment, Delivery, Contacts, Rules } from "../pages";
 
 export default function MainPage() {
   return (
-      <div>
-          <Router>
-              <Header />
-              <main>
-                  <Switch>
-                      <Route path={'/login'}> <Account /> </Route>
-                      <Route path={'/fruits'}> Фрукти </Route>
-                      <Route path={'/vegetables'}> Овочі </Route>
-                      <Route path={'/'} exact> <Categories /> </Route>
-                      <Route path={'/payment'}> <Payment/> </Route>
-                      <Route path={'/delivery'}> <Delivery/> </Route>
-                      <Route path={'/contacts'}> <Contacts/> </Route>
-                      <Route path={'/rules'}> <Rules/> </Route>
+    <div>
+      <Router>
+        <Header />
 
-                  </Switch>
-              </main>
-              <Footer />
-
-          </Router>
-
-      </div>
+        <main>
+          <Switch>
+            <Route path={'/login'}> <Account /> </Route>
+            <Route path={'/fruits'}> Фрукти </Route>
+            <Route path={'/vegetables'}> Овочі </Route>
+            <Route path={'/greens'}> Зелень </Route>
+            <Route path={'/payment'}> <Payment/> </Route>
+            <Route path={'/delivery'}> <Delivery/> </Route>
+            <Route path={'/contacts'}> <Contacts/> </Route>
+            <Route path={'/rules'}> <Rules/> </Route>
+            <Route path={'/'}> <Categories /> </Route>
+          </Switch>
+        </main>
+        
+        <Footer />
+      </Router>
+    </div>
   )
 }
