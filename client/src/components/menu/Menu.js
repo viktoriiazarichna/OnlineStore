@@ -14,7 +14,7 @@ export default function Menu(props) {
 
   return (
     <nav >
-      <ul className={`menu ${isVisible ? 'active' : ''}`} >
+      <ul className={`categoriesMenu ${isVisible ? 'activeCategoriesMenu' : ''}`} >
         {categories.map(category => (
           <li className={'category'} key={category._id}>
             <Link to={`/${category.nameEnglish}`}> {category.name} </Link>
