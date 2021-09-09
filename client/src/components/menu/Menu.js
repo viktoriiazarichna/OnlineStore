@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
 
-import { MainContext } from '../context';
+import { MainContext } from '../../context';
 
 export default function Menu(props) {
   const { isVisible } = props;

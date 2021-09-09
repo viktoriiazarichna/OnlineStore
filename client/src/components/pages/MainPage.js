@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './MainPage.css';
 
-import { Account } from '../account';
+import { RouterLoginRegistr } from '../account';
 import { Header, Footer } from '../header-footer';
 import { Categories } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
-import { MainContext } from '../context';
+import { MainContext } from '../../context';
 
 export default function MainPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +19,7 @@ export default function MainPage() {
 
         <main className={isVisible ? 'transparentGrey' : ''}>
           <Switch>
-            <Route path={'/login'}> <Account /> </Route>
+            <Route path={'/login'}> <RouterLoginRegistr /> </Route>
             {categories.map(category => (
               <Route path={`/${category.nameEnglish}`} key={category._id}> {category.name} </Route>
             ))}

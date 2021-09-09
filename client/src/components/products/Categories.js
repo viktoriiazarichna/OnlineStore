@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Categories.css';
 
-import { MainContext } from '../context';
+import { MainContext } from '../../context';
 
 export default function Categories() {
   const {categories, getAllCategories} = useContext(MainContext);

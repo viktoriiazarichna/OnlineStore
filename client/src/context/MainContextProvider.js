@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { MainContext } from '.';
-import { httpRequest } from '../../helpers';
+import { httpRequest } from '../helpers';
 
 export default function MainContextProvider({children}) {
   const { request } = httpRequest();

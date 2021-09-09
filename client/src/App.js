@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import { MainPage } from './components/pages';
-import { MainContextProvider } from './components/context';
+import { MainContextProvider } from './context';
 
 function App() {
   return (
