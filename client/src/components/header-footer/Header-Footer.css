@@ -12,11 +12,8 @@ header, footer {
   color: black;
 }
 #mainTitle {
-  text-align: center;
+  margin-left: -50%;
 }
 #cart {
   margin-left: 10px;
-}
-.transparentGreen {
-  background: rgb(34, 84, 84, 0.5);
 }

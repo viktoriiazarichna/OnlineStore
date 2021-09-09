@@ -10,6 +10,8 @@ export default function Login() {
     password: ''
   });
 
+  const [user, setUser] = useState();
+
   const updateUserData = (e) => {
     const {target: {name, value} } = e;
 
@@ -17,12 +19,14 @@ export default function Login() {
   };
 
   const login = async () => {
-    await request('http://localhost:5000/login', 'POST', { logUserData });
+    const data = await request('http://localhost:5000/login', 'POST', { logUserData });
 
     setLogUserData({
       email: '',
       password: ''
     });
+
+    setUser(data);
   };
 
   return (

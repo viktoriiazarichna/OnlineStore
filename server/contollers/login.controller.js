@@ -9,7 +9,7 @@ module.exports = {
 
       await passwordHesher.compare(hashedPassword, password);
 
-      res.status(responseCodes.OK).json('OK');
+      res.status(responseCodes.OK).json(req.user);
     } catch (e) {
       next(e);
     }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './MainPage.css';
 
@@ -9,15 +9,14 @@ import { Payment, Delivery, Contacts, Rules } from "../pages";
 import { MainContext } from '../../context';
 
 export default function MainPage() {
-  const [isVisible, setIsVisible] = useState(false);
   const { categories } = useContext(MainContext);
 
   return (
     <div>
       <Router>
-        <Header isVisible={isVisible} setIsVisible={setIsVisible} />
+        <Header />
 
-        <main className={isVisible ? 'transparentGrey' : ''}>
+        <main>
           <Switch>
             <Route path={'/login'}> <RouterLoginRegistr /> </Route>
             {categories.map(category => (
@@ -31,7 +30,7 @@ export default function MainPage() {
           </Switch>
         </main>
         
-        <Footer isVisible={isVisible} />
+        <Footer />
       </Router>
     </div>
   )

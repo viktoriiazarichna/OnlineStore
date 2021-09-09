@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header-Footer.css';
 
 import { Menu } from '../menu';
 
-export default function Header(props) {
-  const { isVisible, setIsVisible } = props;
+export default function Header() {
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleOpenMenu = () => {
     setIsVisible(!isVisible);
-  }
+  };
 
   return (
     <header>
