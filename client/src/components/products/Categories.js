@@ -17,6 +17,7 @@ export default function Categories() {
         <Link to={`/${category.nameEnglish}`} key={category._id} >
           <div className={'oneCategory'}>
             <h3 className={'categoryName'}> {category.name} </h3>
+            <img src={`http://localhost:5000/${category.image}`} alt={category.name} />
           </div> 
         </Link>
       ))}
