@@ -10,3 +10,7 @@
   text-decoration: none;
   color: black;
 }
+.categoryImage {
+  width: 400px;
+  height: 250px;
+}
