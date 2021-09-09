@@ -4,20 +4,25 @@ const { databaseConstants: { USER } } = require('../constants');
 
 const userShema = new Schema({
   username: {
-    type: String
+    type: String,
+    required: true
   },
   email: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
   phone: {
-    type: String
+    type: String,
+    required: true
   },
   address: {
+    required: true,
     type: String
   },
   password: {
     type: String,
+    required: true,
     select: false
   }
 });

@@ -4,10 +4,12 @@ const { databaseConstants: { CATEGORY } } = require('../constants');
 
 const categorySchema = new Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
   nameEnglish: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
