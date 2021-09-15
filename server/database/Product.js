@@ -30,6 +30,9 @@ const productSchema = new Schema({
     ref: CATEGORY,
     id: Number,
     required: true
+  },
+  categoryName: {
+    type: String
   }
 });
 

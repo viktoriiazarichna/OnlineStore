@@ -4,13 +4,7 @@ module.exports = {
   getAllFruits: async (req, res) => {
     const {categoryName} = req.params;
 
-    const productsList = await ProductModel.find().populate('category').exec((err, products) => {
-      if (err) throw err;
-      
-      products = products.filter(product => product.categoryName === categoryName);
-
-      res.send(products);
-    });
+    const productsList = await ProductModel.find().where({'categoryName': categoryName});
 
     console.log(productsList);
     res.json(productsList);
