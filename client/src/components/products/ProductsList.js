@@ -9,7 +9,7 @@ export default function ProductsList() {
   const {nameEnglish} = useParams();
   const [pageName, setPageName] = useState(null);
 
-  const changePageName = () => {
+  const changePageTitle = () => {
     if (nameEnglish === 'fruits') {
       setPageName('Фрукти');
     } else if (nameEnglish === 'vegetables') {
@@ -20,16 +20,24 @@ export default function ProductsList() {
   };
 
   useEffect(() => {
-    changePageName();
-  }, [nameEnglish]);
-
-  useEffect(() => {
+    changePageTitle();
     getAllProductsOfOneCategory(nameEnglish);
-  }, []);
+  }, [allProducts]);
 
   return (
     <div>
       <h2>{pageName}</h2>
+
+      <div id={'productsList'}>
+        {allProducts.map(product => (
+          <Link to={`/${product.nameEnglish}`} key={product._id} className={'oneFruits'}>
+            <div>
+              <h3 className={'fruitsName'}>{product.name}</h3>
+              <img src={`http://localhost:5000/${product.image}`} alt={product.name} className={'productImage'} />
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
