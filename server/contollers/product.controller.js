@@ -6,7 +6,6 @@ module.exports = {
 
     const productsList = await ProductModel.find().where({'categoryName': categoryName});
 
-    console.log(productsList);
     res.json(productsList);
   }
 };
