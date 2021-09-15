@@ -7,13 +7,13 @@ h2 {
   text-align: center;
   font-size: 30px;
 }
-.oneFruits {
+.oneProduct {
   width: 32%;
   margin: 30px 0;
 }
-.fruitsName {
+.productName {
   text-align: center;
 }
-.productImage {
+.productListImage {
   width: 300px;
 }

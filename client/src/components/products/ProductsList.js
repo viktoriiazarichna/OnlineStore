@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import './ProductsList.css';
 
@@ -6,22 +6,22 @@ import { MainContext } from "../../context";
 
 export default function ProductsList() {
   const {allProducts, getAllProductsOfOneCategory} = useContext(MainContext);
-  const {nameEnglish} = useParams();
+  const {categoryName} = useParams();
   const [pageName, setPageName] = useState(null);
 
   const changePageTitle = () => {
-    if (nameEnglish === 'fruits') {
+    if (categoryName === 'fruits') {
       setPageName('Фрукти');
-    } else if (nameEnglish === 'vegetables') {
+    } else if (categoryName === 'vegetables') {
       setPageName('Овочі');
-    } else if (nameEnglish === 'greens') {
+    } else if (categoryName === 'greens') {
       setPageName('Зелень')
     }
   };
 
   useEffect(() => {
     changePageTitle();
-    getAllProductsOfOneCategory(nameEnglish);
+    getAllProductsOfOneCategory(categoryName);
   }, [allProducts]);
 
   return (
@@ -30,10 +30,10 @@ export default function ProductsList() {
 
       <div id={'productsList'}>
         {allProducts.map(product => (
-          <Link to={`/${product.nameEnglish}`} key={product._id} className={'oneFruits'}>
+          <Link to={`/${categoryName}/${product.nameEnglish}`} key={product._id} className={'oneProduct'}>
             <div>
-              <h3 className={'fruitsName'}>{product.name}</h3>
-              <img src={`http://localhost:5000/${product.image}`} alt={product.name} className={'productImage'} />
+              <h3 className={'productName'}>{product.name}</h3>
+              <img src={`http://localhost:5000/${product.image}`} alt={product.name} className={'productListImage'} />
             </div>
           </Link>
         ))}

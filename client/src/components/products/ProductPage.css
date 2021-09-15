@@ -1,0 +1,11 @@
+#productPage {
+  min-height: 550px;
+}
+.productPageImage {
+  height: 500px;
+  float: left;
+  margin-right: 100px;
+}
+.productDescription {
+  margin: 100px;
+}

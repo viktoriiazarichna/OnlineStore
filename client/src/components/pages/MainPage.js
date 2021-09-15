@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './MainPage.css';
 
 import { RouterLoginRegistr } from '../account';
 import { Header, Footer } from '../header-footer';
-import { Categories, ProductsList } from '../products';
+import { Categories, ProductPage, ProductsList } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
-import { MainContext } from '../../context';
 
 export default function MainPage() {
-  const { categories } = useContext(MainContext);
 
   return (
     <div>
@@ -18,10 +16,8 @@ export default function MainPage() {
 
         <main>
           <Switch>
-            {categories.map(category => (
-              <Route path={'/:nameEnglish'} key={category._id}> <ProductsList /> </Route>
-            ))}
-
+            <Route path={'/:categoryName/:productName'}> <ProductPage /> </Route>
+            <Route path={'/:categoryName'}> <ProductsList /> </Route>
             <Route path={'/login'}> <RouterLoginRegistr /> </Route>
             <Route path={'/payment'}> <Payment/> </Route>
             <Route path={'/delivery'}> <Delivery/> </Route>
