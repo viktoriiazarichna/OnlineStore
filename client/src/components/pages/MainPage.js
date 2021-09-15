@@ -16,13 +16,13 @@ export default function MainPage() {
 
         <main>
           <Switch>
-            <Route path={'/:categoryName/:productName'}> <ProductPage /> </Route>
-            <Route path={'/:categoryName'}> <ProductsList /> </Route>
             <Route path={'/login'}> <RouterLoginRegistr /> </Route>
             <Route path={'/payment'}> <Payment/> </Route>
             <Route path={'/delivery'}> <Delivery/> </Route>
             <Route path={'/contacts'}> <Contacts/> </Route>
             <Route path={'/rules'}> <Rules/> </Route>
+            <Route path={'/:categoryName/:productName'}> <ProductPage /> </Route>
+            <Route path={'/:categoryName'}> <ProductsList /> </Route>
             <Route path={'/'}> <Categories /> </Route>
           </Switch>
         </main>
