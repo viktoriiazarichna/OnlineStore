@@ -12,7 +12,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <div id={'categoies'}>
+    <div id={'categories'}>
       {categories.map(category => (
         <Link to={`/${category.nameEnglish}`} key={category._id} >
           <div className={'oneCategory'}>

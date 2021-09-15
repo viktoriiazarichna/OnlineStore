@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const { envConstants: { HOST, PORT, MONGOOSE_DB } } = require('./constants');
-const { categoriesRouter, loginRouter, registrationRouter } = require('./routes');
+const { categoriesRouter, fruitsRouter, loginRouter, registrationRouter } = require('./routes');
 
 const app = express();
 
@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(process.cwd(), 'static')));
 
 app.use('/categories', categoriesRouter);
+app.use('/fruits', fruitsRouter);
 app.use('/login', loginRouter);
 app.use('/registration', registrationRouter);
 

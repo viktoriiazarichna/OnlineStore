@@ -1,16 +1,12 @@
-#categories {
+#fruits {
   display: flex;
   justify-content: space-around;
 }
-.oneCategory {
+.oneFruits {
   width: 32%;
 }
-.categoryName, a {
+.fruitsName, a {
   text-align: center;
   text-decoration: none;
   color: black;
-}
-.categoryImage {
-  width: 400px;
-  height: 250px;
 }
