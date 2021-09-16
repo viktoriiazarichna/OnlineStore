@@ -1,6 +1,5 @@
 module.exports = {
+  accountRouter: require('./account.router'),
   categoriesRouter: require('./categories.router'),
-  loginRouter: require('./login.router'),
-  productRouter: require('./product.router'),
-  registrationRouter: require('./registration.router')
+  productRouter: require('./product.router')
 };

@@ -4,11 +4,17 @@ import './Header-Footer.css';
 
 import { Menu } from '../menu';
 
-export default function Header() {
+export default function Header(props) {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
+
+  const {user, setUser} = props;
 
   const handleOpenMenu = () => {
     setIsVisibleMenu(!isVisibleMenu);
+  };
+
+  const logout = async () => {
+    setUser(null);
   };
 
   return (
@@ -21,7 +27,7 @@ export default function Header() {
       </h1>
 
       <div>
-        <Link to={'/login'} className={'headerLink'}> Увійти </Link>
+        {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : <button onClick={logout} id={'exit'}> Вийти </button>}
         <span id={'cart'}>cart:0</span>
       </div>
     </header>

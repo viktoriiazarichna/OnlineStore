@@ -1,7 +1,7 @@
 header, footer {
   padding: 0 50px;
 }
-#menuButton {
+#menuButton, #exit {
   background: transparent;
   border: none;
   cursor: pointer;

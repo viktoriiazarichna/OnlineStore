@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const { envConstants: { HOST, PORT, MONGOOSE_DB } } = require('./constants');
-const { categoriesRouter, loginRouter, productRouter, registrationRouter } = require('./routes');
+const { categoriesRouter, accountRouter, productRouter } = require('./routes');
 
 const app = express();
 
@@ -20,9 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(process.cwd(), 'static')));
 
 app.use('/categories', categoriesRouter);
-app.use('/login', loginRouter);
+app.use('/account', accountRouter);
 app.use('/catalog', productRouter);
-app.use('/registration', registrationRouter);
 
 app.listen(PORT, HOST, () => {
   console.log(`App listen ${PORT}`);

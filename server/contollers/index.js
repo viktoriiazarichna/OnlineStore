@@ -1,6 +1,5 @@
 module.exports = {
+  accountController: require('./account.controller'),
   categoriesController: require('./categories.controller'),
-  loginController: require('./login.controller'),
-  productController: require('./product.controller'),
-  registrationController: require('./registration.controller')
+  productController: require('./product.controller')
 };

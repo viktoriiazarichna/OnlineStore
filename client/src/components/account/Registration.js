@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 import { httpRequest } from '../../helpers';
 
-export default function Login() {
+export default function Registration(props) {
   const { request } = httpRequest();
 
   const [regUserData, setRegUserData] = useState({
@@ -13,6 +14,8 @@ export default function Login() {
     password: ''
   });
 
+  const {user, setUser} = props;
+
   const updateUserData = (e) => {
     const {target: {name, value} } = e;
 
@@ -20,7 +23,7 @@ export default function Login() {
   };
 
   const registration = async () => {
-    await request('http://localhost:5000/registration', 'POST', { regUserData });
+    const data = await request('http://localhost:5000/account/registration', 'POST', { regUserData });
 
     setRegUserData({
       username: '',
@@ -29,6 +32,8 @@ export default function Login() {
       address: '',
       password: ''
     });
+
+    setUser(data);
   };
 
   return (
@@ -46,6 +51,10 @@ export default function Login() {
       <br />
       <br />
       <button onClick={registration}>зареєструватись</button>
+      <br />
+      <Link to="/login">увійти</Link>
+
+      {user && <Redirect to={`/account/${user._id}`} />}
     </div>
   )
 }
