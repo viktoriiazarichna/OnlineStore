@@ -15,7 +15,7 @@ export default function UserContextProvider({children}) {
     } else {
       data = await request(`http://localhost:5000/account/${route}`, method, { body });
     }
-
+console.log(data);
     setUser(data);
   };
 

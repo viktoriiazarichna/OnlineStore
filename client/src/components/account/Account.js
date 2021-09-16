@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import './Account.css';
 
 import { UserContext } from '../../context';
@@ -29,6 +29,8 @@ export default function Account() {
           </ul>
         </div>
       )}
+
+      {(user && !user.isLogin) && <Redirect to={'/'} />}
     </div>
   )
 }

@@ -1,3 +1,4 @@
 module.exports = {
-  passwordHesher: require('./password.hesher')
+  passwordHesher: require('./password.hesher'),
+  tokenService: require('./token.service')
 };

@@ -1,6 +1,7 @@
 const { responseCodes } = require('../constants');
 const { UserModel } = require('../database');
 const { ErrorHandler, errorMessages }  = require('../errors');
+const { tokenService } = require('../services');
 const { registrationValidator } = require('../validators');
 
 module.exports = {

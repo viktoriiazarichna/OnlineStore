@@ -18,7 +18,7 @@ export default function Header() {
   const logout = () => {
     userRequest('logout', 'PUT', {id: user._id});
   };
-console.log(user);
+
   return (
     <header>
       <button id={'menuButton'} onClick={handleOpenMenu}> Меню </button>
@@ -29,7 +29,7 @@ console.log(user);
       </h1>
 
       <div className={'rightHeaderBlock'}>
-        {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
+        {(!user || !user.isLogin) ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
           <>
             <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}> {user.username[0]} </div>
             <button onClick={logout} id={'exit'}> Вийти </button>
