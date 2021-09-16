@@ -23,7 +23,7 @@ export default function Menu(props) {
   };
 
   return (
-    <nav>
+    <nav onMouseLeave={cancelSelectCategory}>
       <ul className={`categoriesMenu ${isVisibleMenu ? 'activeCategoriesMenu' : ''}`}>
         {categories.map(category => (
           <li className={'category'} key={category._id}>
@@ -32,7 +32,7 @@ export default function Menu(props) {
             <ul className={`productsMenu ${isVisibleProductsList ? 'activeProductsListMenu': ''}`}>
               {allProducts.map(product => (
                 <li key={product._id}>
-                  <Link to={`/${category.nameEnglish}/${product.nameEnglish}`} onMouseOut={cancelSelectCategory}> {product.name} </Link>
+                  <Link to={`/${category.nameEnglish}/${product.nameEnglish}`}> {product.name} </Link>
                 </li>
               ))}
             </ul>

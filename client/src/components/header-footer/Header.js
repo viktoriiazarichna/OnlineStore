@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Header-Footer.css';
 
 import { Menu } from '../menu';
@@ -9,6 +9,7 @@ export default function Header() {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
   const {user, userRequest} = useContext(UserContext);
+  const history = useHistory();
 
   const handleOpenMenu = () => {
     setIsVisibleMenu(!isVisibleMenu);
@@ -17,7 +18,7 @@ export default function Header() {
   const logout = () => {
     userRequest('logout', 'PUT', {id: user._id});
   };
-
+console.log(user);
   return (
     <header>
       <button id={'menuButton'} onClick={handleOpenMenu}> Меню </button>
@@ -27,10 +28,10 @@ export default function Header() {
         <Link to={'/'} className={'headerLink'}> Вега-лавка </Link>
       </h1>
 
-      <div>
+      <div className={'rightHeaderBlock'}>
         {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
           <>
-            <Link to={`/account/${user._id}`} id={'userBtn'}> {user.username[0]} </Link>
+            <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}> {user.username[0]} </div>
             <button onClick={logout} id={'exit'}> Вийти </button>
           </>
         )}
