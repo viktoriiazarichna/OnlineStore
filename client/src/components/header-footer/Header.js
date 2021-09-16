@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header>
       <button id={'menuButton'} onClick={handleOpenMenu}> Меню </button>
-      <Menu isVisibleMenu={isVisibleMenu}/> 
+      <Menu isVisibleMenu={isVisibleMenu} setIsVisibleMenu={setIsVisibleMenu} /> 
 
       <h1 id={'mainTitle'}>
         <Link to={'/'} className={'headerLink'}> Вега-лавка </Link>

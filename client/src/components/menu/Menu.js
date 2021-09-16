@@ -5,7 +5,7 @@ import './Menu.css';
 import { MainContext } from '../../context';
 
 export default function Menu(props) {
-  const { isVisibleMenu } = props;
+  const { isVisibleMenu, setIsVisibleMenu } = props;
   const { categories, getAllCategories,  allProducts, getAllProductsOfOneCategory } = useContext(MainContext);
   const [isVisibleProductsList, setIsVisibleProductsList] = useState(false);
 
@@ -19,19 +19,20 @@ export default function Menu(props) {
   };
   const cancelSelectCategory = () => {
     setIsVisibleProductsList(false);
+    setIsVisibleMenu(false);
   };
 
   return (
-    <nav >
+    <nav>
       <ul className={`categoriesMenu ${isVisibleMenu ? 'activeCategoriesMenu' : ''}`} >
         {categories.map(category => (
           <li className={'category'} key={category._id}>
-            <Link to={`/${category.nameEnglish}`} onMouseOver={() => selectCaterogy(category.nameEnglish)} onMouseOut={cancelSelectCategory}> {category.name} </Link>
+            <Link to={`/${category.nameEnglish}`} onMouseOver={() => selectCaterogy(category.nameEnglish)}> {category.name} </Link>
 
             <ul className={`productsMenu ${isVisibleProductsList ? 'activeProductsListMenu': ''}`}>
               {allProducts.map(product => (
                 <li key={product._id}>
-                  <Link to={`/${category.nameEnglish}/${product.nameEnglish}`}> {product.name} </Link>
+                  <Link to={`/${category.nameEnglish}/${product.nameEnglish}`} onMouseOut={cancelSelectCategory}> {product.name} </Link>
                 </li>
               ))}
             </ul>
