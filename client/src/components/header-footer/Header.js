@@ -28,7 +28,12 @@ export default function Header() {
       </h1>
 
       <div>
-        {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : <button onClick={logout} id={'exit'}> Вийти </button>}
+        {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
+          <>
+            <Link to={`/account/${user._id}`} id={'userBtn'}> {user.username[0]} </Link>
+            <button onClick={logout} id={'exit'}> Вийти </button>
+          </>
+        )}
         <span id={'cart'}>cart:0</span>
       </div>
     </header>

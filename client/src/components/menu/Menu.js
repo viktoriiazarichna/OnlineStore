@@ -24,7 +24,7 @@ export default function Menu(props) {
 
   return (
     <nav>
-      <ul className={`categoriesMenu ${isVisibleMenu ? 'activeCategoriesMenu' : ''}`} >
+      <ul className={`categoriesMenu ${isVisibleMenu ? 'activeCategoriesMenu' : ''}`}>
         {categories.map(category => (
           <li className={'category'} key={category._id}>
             <Link to={`/${category.nameEnglish}`} onMouseOver={() => selectCaterogy(category.nameEnglish)}> {category.name} </Link>
