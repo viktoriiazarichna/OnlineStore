@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header-Footer.css';
 
 import { Menu } from '../menu';
+import { UserContext } from '../../context';
 
-export default function Header(props) {
+export default function Header() {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
-  const {user, setUser} = props;
+  const {user, userRequest} = useContext(UserContext);
 
   const handleOpenMenu = () => {
     setIsVisibleMenu(!isVisibleMenu);
   };
 
-  const logout = async () => {
-    setUser(null);
+  const logout = () => {
+    userRequest('logout', 'PUT', {id: user._id});
   };
 
   return (

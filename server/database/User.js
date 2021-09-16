@@ -24,6 +24,9 @@ const userShema = new Schema({
     type: String,
     required: true,
     select: false
+  },
+  isLogin: {
+    type: Boolean
   }
 });
 

@@ -14,4 +14,8 @@ router.post('/login',
   accountController.loginUser
 );
 
+router.put('/logout', accountController.logoutUser);
+
+router.get('/:id', accountController.getOneUser);
+
 module.exports = router;

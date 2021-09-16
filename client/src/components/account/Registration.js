@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './Account.css';
 
-import { httpRequest } from '../../helpers';
+import { UserContext } from '../../context';
 
-export default function Registration(props) {
-  const { request } = httpRequest();
-
+export default function Registration() {
   const [regUserData, setRegUserData] = useState({
     username: '',
     email: '',
@@ -15,7 +13,7 @@ export default function Registration(props) {
     password: ''
   });
 
-  const {user, setUser} = props;
+  const {user, userRequest} = useContext(UserContext);
 
   const updateUserData = (e) => {
     const {target: {name, value} } = e;
@@ -23,8 +21,8 @@ export default function Registration(props) {
     setRegUserData({...regUserData, [name]: value });
   };
 
-  const registration = async () => {
-    const data = await request('http://localhost:5000/account/registration', 'POST', { regUserData });
+  const registration = () => {
+    userRequest('registration', 'POST', regUserData);
 
     setRegUserData({
       username: '',
@@ -33,8 +31,6 @@ export default function Registration(props) {
       address: '',
       password: ''
     });
-
-    setUser(data);
   };
 
   return (

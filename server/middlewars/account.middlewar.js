@@ -6,7 +6,7 @@ const { registrationValidator } = require('../validators');
 module.exports = {
   checkIsEmailBusy: async (req, res, next) => {
     try {
-      const { email } = req.body.regUserData
+      const { email } = req.body.body
 
       const user = await UserModel.findOne({ email });
 
@@ -26,7 +26,7 @@ module.exports = {
   
   checkIsRegUserDataValidity: (req, res, next) => {
     try {
-      const { error } = registrationValidator.createUser.validate(req.body.regUserData);
+      const { error } = registrationValidator.createUser.validate(req.body.body);
 
       if (error) {
         throw new Error (
@@ -44,7 +44,7 @@ module.exports = {
   
   getUser: async (req, res, next) => {
     try {
-      const { email } = req.body.logUserData;
+      const { email } = req.body.body;
 
       const user = await UserModel.findOne({ email }).select('+password');
 

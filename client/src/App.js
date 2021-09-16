@@ -2,13 +2,15 @@ import React from 'react';
 import './App.css';
 
 import { MainPage } from './components/pages';
-import { MainContextProvider } from './context';
+import { MainContextProvider, UserContextProvider } from './context';
 
 function App() {
   return (
-    <MainContextProvider>
-      <MainPage />
-    </MainContextProvider>
+    <UserContextProvider>
+      <MainContextProvider>
+        <MainPage />
+      </MainContextProvider>
+    </UserContextProvider>
   );
 }
 
