@@ -5,16 +5,16 @@ import './Header-Footer.css';
 import { Menu } from '../menu';
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
   const handleOpenMenu = () => {
-    setIsVisible(!isVisible);
+    setIsVisibleMenu(!isVisibleMenu);
   };
 
   return (
     <header>
       <button id={'menuButton'} onClick={handleOpenMenu}> Меню </button>
-      <Menu isVisible={isVisible}/> 
+      <Menu isVisibleMenu={isVisibleMenu}/> 
 
       <h1 id={'mainTitle'}>
         <Link to={'/'} className={'headerLink'}> Вега-лавка </Link>

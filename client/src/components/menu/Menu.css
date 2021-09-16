@@ -1,4 +1,4 @@
-.categoriesMenu {
+.categoriesMenu, .productsMenu {
   opacity: 0;
   position: absolute;
   top: 40px;
@@ -11,9 +11,13 @@
   width: 100px;
 }
 
-.categoriesMenu.activeCategoriesMenu {
+.categoriesMenu.activeCategoriesMenu, .activeProductsListMenu {
   opacity: 1;
 }
 .categoriesMenu > li {
   line-height: 30px;
+}
+
+.productsMenu {
+  margin-left: 160px;
 }
