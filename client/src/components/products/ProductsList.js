@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import './ProductsList.css';
 
 import { MainContext } from "../../context";
+import { URL } from '../../constants/constants';
 
 export default function ProductsList() {
   const {allProducts, getAllProductsOfOneCategory} = useContext(MainContext);
@@ -33,7 +34,7 @@ export default function ProductsList() {
           <Link to={`/${categoryName}/${product.nameEnglish}`} key={product._id} className={'oneProduct'}>
             <div>
               <h3 className={'productName'}>{product.name}</h3>
-              <img src={`http://localhost:5000/${product.image}`} alt={product.name} className={'productListImage'} />
+              <img src={`${URL}${product.image}`} alt={product.name} className={'productListImage'} />
             </div>
           </Link>
         ))}

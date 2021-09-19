@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { UserContext } from '.';
 import { httpRequest } from '../helpers';
+import { URL } from '../constants/constants';
 
 export default function UserContextProvider({children}) {
   const { request } = httpRequest();
@@ -11,9 +12,9 @@ export default function UserContextProvider({children}) {
   const userRequest = async (route, method, body = null) => {
     let data;
     if (method === 'GET') {
-      data = await request(`http://localhost:5000/account/${route}`, method);
+      data = await request(`${URL}account/${route}`, method);
     } else {
-      data = await request(`http://localhost:5000/account/${route}`, method, { body });
+      data = await request(`${URL}account/${route}`, method, { body });
     }
 console.log(data);
     setUser(data);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { MainContext } from '.';
 import { httpRequest } from '../helpers';
+import { URL } from '../constants/constants';
 
 export default function MainContextProvider({children}) {
   const { request } = httpRequest();
@@ -11,19 +12,19 @@ export default function MainContextProvider({children}) {
   const [product, setProduct] = useState();
 
   const getAllCategories = async () => {
-    const data = await request('http://localhost:5000/categories');
+    const data = await request(`${URL}categories`);
 
     setCategories(data);
   };
 
   const getAllProductsOfOneCategory = async (categoryName) => {
-    const data = await request(`http://localhost:5000/catalog/${categoryName}`);
+    const data = await request(`${URL}catalog/${categoryName}`);
 
     setAllProducts(data);
   };
 
   const getProduct = async (categoryName, productName) => {
-    const data = await request(`http://localhost:5000/catalog/${categoryName}/${productName}`);
+    const data = await request(`${URL}catalog/${categoryName}/${productName}`);
 
     setProduct(data);
   };
