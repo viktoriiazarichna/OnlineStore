@@ -32,7 +32,9 @@ export default function Header() {
       <div className={'rightHeaderBlock'}>
         {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
           <>
-            <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}> <img src={AccountLogo} alt={'особистий кабінет'} id={'accountLogo'} /> </div>
+            <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}>
+              <img src={AccountLogo} alt={'особистий кабінет'} id={'accountLogo'} />
+            </div>
             <button onClick={logout} id={'exit'}> Вийти </button>
           </>
         )}
