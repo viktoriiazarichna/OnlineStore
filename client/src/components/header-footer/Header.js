@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './Header-Footer.css';
+import AccountLogo from '../../images/account.png';
 
 import { Menu } from '../menu';
 import { UserContext } from '../../context';
@@ -16,7 +17,7 @@ export default function Header() {
   };
 
   const logout = () => {
-    userRequest('logout', 'PUT', {id: user._id});
+    userRequest('logout', 'PUT', {}, user.accessToken);
   };
 
   return (
@@ -29,9 +30,9 @@ export default function Header() {
       </h1>
 
       <div className={'rightHeaderBlock'}>
-        {(!user || !user.isLogin) ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
+        {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
           <>
-            <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}> {user.username[0]} </div>
+            <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}> <img src={AccountLogo} alt={'особистий кабінет'} id={'accountLogo'} /> </div>
             <button onClick={logout} id={'exit'}> Вийти </button>
           </>
         )}

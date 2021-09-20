@@ -48,3 +48,9 @@ header > span, footer span {
   align-items: center;
   cursor: pointer;
 }
+
+#accountLogo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

@@ -14,7 +14,7 @@ router.post('/login',
   accountController.loginUser
 );
 
-router.put('/logout', accountController.logoutUser);
+router.put('/logout', accountMiddlewar.checkAccessToken, accountController.logoutUser);
 
 router.get('/:id', accountController.getOneUser);
 

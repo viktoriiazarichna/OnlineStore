@@ -18,7 +18,7 @@ export default function ProductPage() {
     <>
       {product && (
         <div id={'productPage'}>
-          <h2>{product && product.name}</h2>
+          <h2>{product.name}</h2>
 
           <img src={`${URL}${product.image}`} alt={product.name} className={'productPageImage'} />
           <div className={'productDescription'}>

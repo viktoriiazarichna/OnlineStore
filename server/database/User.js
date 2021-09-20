@@ -25,8 +25,13 @@ const userShema = new Schema({
     required: true,
     select: false
   },
-  isLogin: {
-    type: Boolean
+  accessToken: {
+    type: String,
+    required: true
+  },
+  refreshToken: {
+    type: String,
+    required: true
   }
 });
 

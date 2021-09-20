@@ -30,7 +30,7 @@ export default function Account() {
         </div>
       )}
 
-      {(user && !user.isLogin) && <Redirect to={'/'} />}
+      {!user && <Redirect to={'/'} />}
     </div>
   )
 }
