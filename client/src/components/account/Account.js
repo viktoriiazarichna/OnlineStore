@@ -1,20 +1,11 @@
 import React, { useContext } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './Account.css';
 
 import { UserContext } from '../../context';
 
 export default function Account() {
-  const {user, userRequest} = useContext(UserContext);
-  const {id} = useParams();
-
-  const getUser = () => {
-    userRequest(id, 'GET');
-  };
-
-  if (!user) {
-    getUser();
-  }
+  const {user} = useContext(UserContext);
 
   return (
     <div>

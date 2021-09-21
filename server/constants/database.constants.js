@@ -1,4 +1,5 @@
 module.exports = {
+  AUTH:'auth',
   CARD: 'card',
   CATEGORY: 'category',
   ORDER: 'order',

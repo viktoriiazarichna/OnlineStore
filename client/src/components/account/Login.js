@@ -13,7 +13,7 @@ export default function Login() {
   const {user, userRequest} = useContext(UserContext);
 
   const updateUserData = (e) => {
-    const {target: {name, value} } = e;
+    const {name, value} = e.target;
 
     setLogUserData({...logUserData, [name]: value });
   };

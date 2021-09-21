@@ -24,14 +24,6 @@ const userShema = new Schema({
     type: String,
     required: true,
     select: false
-  },
-  accessToken: {
-    type: String,
-    required: true
-  },
-  refreshToken: {
-    type: String,
-    required: true
   }
 });
 

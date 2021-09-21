@@ -94,5 +94,36 @@ module.exports = {
     } catch (e) {
       next(e);
     }
+  },
+
+  checkRefreshToken: async (req, res, next) => {
+    try {
+      const token = req.get('Authorization');
+
+      if (!token) {
+        throw new ErrorHandler(
+          responseCodes.AUTHENTICATION_ERROR,
+          errorMessages.NO_TOKEN.message,
+          errorMessages.NO_TOKEN.code
+        )
+      }
+
+      await tokenService.verifyToken(token, 'refresh');
+
+      const tokenObj = await UserModel.findOne({ refreshToken: token });
+
+      if (!tokenObj) {
+        throw new ErrorHandler(
+          responseCodes.AUTHENTICATION_ERROR,
+          errorMessages.WRONG_TOKEN.message,
+          errorMessages.WRONG_TOKEN.code
+        )
+      }
+
+      req.user = tokenObj;
+      next();
+    } catch (e) {
+      next(e);
+    }
   }
 };

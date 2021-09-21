@@ -9,24 +9,31 @@ export default function UserContextProvider({children}) {
 
   const [user, setUser] = useState();
 
-  const userRequest = async (route, method, body = null, token) => {
+  const userRequest = async (route, method, body = null) => {
     let data;
     if (method === 'GET') {
       data = await request(`${URL}account/${route}`, method);
-    } else if (token)  {
-      await request(`${URL}account/${route}`, method, { body }, { 'Authorization': token });
-    }
-    else {
+    } else {
       data = await request(`${URL}account/${route}`, method, { body });
     }
 
-    setUser(data);
+    setUser(data.user);
+
+    localStorage.setItem('accessToken', data.accessToken);
+    localStorage.setItem('refreshToken', data.refreshToken);
+  };
+
+  const userRequestLogout = async (route, method, body = null, token) => {
+    await request(`${URL}account/${route}`, method, { body }, { 'Authorization': token });
+
+    setUser(null);
   };
 
   return (
     <UserContext.Provider value={{
       user,
-      userRequest
+      userRequest,
+      userRequestLogout
     }}>
       {children}
     </UserContext.Provider>

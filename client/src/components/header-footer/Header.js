@@ -9,7 +9,7 @@ import { UserContext } from '../../context';
 export default function Header() {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
-  const {user, userRequest} = useContext(UserContext);
+  const {user, userRequestLogout} = useContext(UserContext);
   const history = useHistory();
 
   const handleOpenMenu = () => {
@@ -17,7 +17,8 @@ export default function Header() {
   };
 
   const logout = () => {
-    userRequest('logout', 'PUT', {}, user.accessToken);
+    const accessToken = localStorage.getItem('accessToken');
+    userRequestLogout('logout', 'PUT', {}, accessToken);
   };
 
   return (

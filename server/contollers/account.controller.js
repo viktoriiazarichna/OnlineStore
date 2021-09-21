@@ -1,5 +1,5 @@
 const { responseCodes } = require('../constants');
-const { UserModel } = require('../database');
+const { AuthModel, UserModel } = require('../database');
 const { passwordHesher, tokenService } = require('../services');
 
 module.exports = {
@@ -15,11 +15,17 @@ module.exports = {
         email,
         phone,
         address,
-        password: hashedPassword,
-        ...tokenPair
+        password: hashedPassword
+      });
+      await AuthModel.create({
+        ...tokenPair,
+        userId: user._id
       });
 
-      res.status(responseCodes.CREATED).json(user);
+      res.status(responseCodes.CREATED).json({
+        user,
+        ...tokenPair
+      });
     } catch (e) {
       next(e);
     }
@@ -27,16 +33,22 @@ module.exports = {
   
   loginUser: async (req, res, next) => {
     try {
-      const { password: hashedPassword } = req.user;
+      const { password: hashedPassword, id } = req.user;
       const { password } = req.body.body;
 
       await passwordHesher.compare(hashedPassword, password);
 
       const tokenPair = tokenService.generateTokenPair();
 
-      const user = await UserModel.findOneAndUpdate({_id: req.user._id}, { ...tokenPair }, { new: true });
+      await AuthModel.create({
+        ...tokenPair,
+        userId: id
+      });
 
-      res.status(responseCodes.OK).json(user);
+      res.status(responseCodes.OK).json({
+        user: req.user,
+        ...tokenPair
+      });
     } catch (e) {
       next(e);
     }
@@ -46,7 +58,7 @@ module.exports = {
     try {
       const token = req.get('Authorization');
 
-      await UserModel.updateOne({ accessToken: token }, { accessToken: '' });
+      await AuthModel.deleteOne({ accessToken: token });
 
       res.json('Ok');
     } catch (e) {

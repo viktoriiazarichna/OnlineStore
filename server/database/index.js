@@ -1,4 +1,5 @@
 module.exports = {
+  AuthModel: require('./Auth'),
   CardModel: require('./Card'),
   CategoryModel: require('./Category'),
   OrderModel: require('./Order'),
