@@ -8,6 +8,7 @@ import { Categories, ProductPage, ProductsList } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
 
 export default function MainPage() {
+
   return (
     <div>
       <Router>

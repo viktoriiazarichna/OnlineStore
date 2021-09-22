@@ -8,7 +8,7 @@ export const httpRequest = () => {
     const res = await fetch (url, {method, body, headers});
     const data = await res.json();
 
-    return data;
+    return data
   }
 
   return { request };

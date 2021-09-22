@@ -27,6 +27,9 @@ export default function UserContextProvider({children}) {
     await request(`${URL}account/${route}`, method, { body }, { 'Authorization': token });
 
     setUser(null);
+
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   };
 
   return (
