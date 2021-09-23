@@ -23,7 +23,7 @@ export default function ProductsList() {
   useEffect(() => {
     changePageTitle();
     getAllProductsOfOneCategory(categoryName);
-  }, [allProducts]);
+  }, []);
 
   return (
     <div>

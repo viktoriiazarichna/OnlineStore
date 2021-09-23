@@ -34,7 +34,7 @@ export default function Header() {
         {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
           <>
             <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}>
-              <img src={AccountLogo} alt={'особистий кабінет'} id={'accountLogo'} />
+              {user.username[0]}
             </div>
             <button onClick={logout} id={'exit'}> Вийти </button>
           </>

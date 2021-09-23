@@ -7,6 +7,8 @@ import { UserContext } from '../../context';
 export default function Account() {
   const {user} = useContext(UserContext);
 
+  const aT = localStorage.getItem('accessToken');
+
   return (
     <div>
       {user && (
