@@ -10,7 +10,7 @@ export default function Login() {
     password: ''
   });
 
-  const {user, userRequest} = useContext(UserContext);
+  const {user, userRequestLogin} = useContext(UserContext);
 
   const updateUserData = (e) => {
     const {name, value} = e.target;
@@ -19,7 +19,7 @@ export default function Login() {
   };
 
   const login = () => {
-    userRequest('login', 'POST', logUserData);
+    userRequestLogin('login', 'POST', logUserData);
 
     setLogUserData({
       email: '',

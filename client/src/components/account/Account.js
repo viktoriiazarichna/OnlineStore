@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Account.css';
 
 import { UserContext } from '../../context';
 
-export default function Account() {
-  const {user} = useContext(UserContext);
+export default function Account() {  const {user, userRequest} = useContext(UserContext);
 
-  const aT = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem('accessToken');
+  const id = localStorage.getItem('userId');
+
+  useEffect(() => {
+    userRequest(id);
+  }, [accessToken]);
 
   return (
     <div>

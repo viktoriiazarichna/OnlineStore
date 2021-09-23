@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './Header-Footer.css';
-import AccountLogo from '../../images/account.png';
 
 import { Menu } from '../menu';
 import { UserContext } from '../../context';

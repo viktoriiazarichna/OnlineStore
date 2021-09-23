@@ -13,7 +13,7 @@ export default function Registration() {
     password: ''
   });
 
-  const {user, userRequest} = useContext(UserContext);
+  const {user, userRequestLogin} = useContext(UserContext);
 
   const updateUserData = (e) => {
     const {target: {name, value} } = e;
@@ -22,7 +22,7 @@ export default function Registration() {
   };
 
   const registration = () => {
-    userRequest('registration', 'POST', regUserData);
+    userRequestLogin('registration', 'POST', regUserData);
 
     setRegUserData({
       username: '',
