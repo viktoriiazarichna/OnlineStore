@@ -16,6 +16,7 @@ export default function UserContextProvider({children}) {
     localStorage.setItem('accessToken', data.accessToken);
     localStorage.setItem('refreshToken', data.refreshToken);
     localStorage.setItem('userId', data.user._id);
+    localStorage.setItem('role', data.user.role);
   };
 
   const userRequestLogout = async (route, method, body = null, token) => {
@@ -25,6 +26,7 @@ export default function UserContextProvider({children}) {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('role');
   };
 
   const userRequest = async (route) => {

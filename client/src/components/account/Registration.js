@@ -16,7 +16,7 @@ export default function Registration() {
   const {user, userRequestLogin} = useContext(UserContext);
 
   const updateUserData = (e) => {
-    const {target: {name, value} } = e;
+    const {name, value} = e.target;
 
     setRegUserData({...regUserData, [name]: value });
   };

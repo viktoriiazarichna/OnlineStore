@@ -4,7 +4,8 @@ import './Account.css';
 
 import { UserContext } from '../../context';
 
-export default function Account() {  const {user, userRequest} = useContext(UserContext);
+export default function Account() {  
+  const {user, userRequest} = useContext(UserContext);
 
   const accessToken = localStorage.getItem('accessToken');
   const id = localStorage.getItem('userId');

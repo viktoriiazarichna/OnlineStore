@@ -1,4 +1,4 @@
-const { responseCodes } = require('../constants');
+const { databaseConstants: {ADMIN}, responseCodes } = require('../constants');
 const { AuthModel, UserModel } = require('../database');
 const { passwordHesher, tokenService } = require('../services');
 
@@ -10,12 +10,19 @@ module.exports = {
       const hashedPassword = await passwordHesher.hash(password);
       const tokenPair = tokenService.generateTokenPair();
 
+      const countUsers = await UserModel.estimatedDocumentCount();
+      let role;
+      if (countUsers === 0) {
+        role = ADMIN;
+      }
+
       const user = await UserModel.create({
         username,
         email,
         phone,
         address,
-        password: hashedPassword
+        password: hashedPassword,
+        role
       });
       await AuthModel.create({
         ...tokenPair,
@@ -70,7 +77,7 @@ module.exports = {
     try {
       const {id} = req.params;
 
-      const user = await UserModel.findOne({id});
+      const user = await UserModel.findOne({_id: id});
 
       res.json(user);
     } catch (e) {

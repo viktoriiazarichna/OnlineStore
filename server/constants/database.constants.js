@@ -1,4 +1,5 @@
 module.exports = {
+  ADMIN: 'admin',
   AUTH:'auth',
   CARD: 'card',
   CATEGORY: 'category',
