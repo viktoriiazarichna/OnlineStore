@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Menu.css';
 
 import { MainContext } from '../../context';
+import { AddProductPage } from '../pages';
 
 export default function Menu(props) {
   const { isVisibleMenu, setIsVisibleMenu } = props;
@@ -38,6 +39,7 @@ export default function Menu(props) {
             </ul>
           </li>
         ))}
+        {(localStorage.getItem("role") === "user") && (<li> <Link to="/addProductPage">Add Product</Link>  </li>)}
       </ul>
     </nav>
   )

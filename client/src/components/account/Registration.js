@@ -39,9 +39,10 @@ export default function Registration() {
 
       <div className={'accForm'}>
         <div> 
-          <label>ПІБ</label>
+          <label>Ім'я</label>
           <input value={regUserData.name} onChange={updateUserData} type="text" name="username" />
-        </div>
+        </div>       
+
         <div>
           <label>Email</label>
           <input value={regUserData.email} onChange={updateUserData} type="text" name="email" />

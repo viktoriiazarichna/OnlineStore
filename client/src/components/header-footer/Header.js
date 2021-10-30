@@ -38,8 +38,12 @@ export default function Header() {
             <button onClick={logout} id={'exit'}> Вийти </button>
           </>
         )}
-        <span id={'cart'}>cart:0</span>
+        
+        <div id={'cart'}>
+            <Link to={'/cart'}> cart:0 </Link>
+        </div>
       </div>
+
     </header>
   )
 }

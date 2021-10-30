@@ -17,3 +17,8 @@ h2 {
 .productListImage {
   width: 300px;
 }
+
+.btn {
+  height: 20px;
+  width: 30px;
+}

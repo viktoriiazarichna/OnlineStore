@@ -1,14 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import './ProductsList.css';
+
 
 import { MainContext } from "../../context";
 import { URL } from '../../constants/constants';
+
+
+
 
 export default function ProductsList() {
   const {allProducts, getAllProductsOfOneCategory} = useContext(MainContext);
   const {categoryName} = useParams();
   const [pageName, setPageName] = useState(null);
+
+  const history = useHistory();
 
   const changePageTitle = () => {
     if (categoryName === 'fruits') {
@@ -25,9 +31,19 @@ export default function ProductsList() {
     getAllProductsOfOneCategory(categoryName);
   }, []);
 
+  
+
   return (
     <div>
       <h2>{pageName}</h2>
+      <div> 
+
+        {(localStorage.getItem("role") === "user") && (<button onClick={()=> history.push("/addProductPage")}>Add Product</button>)}
+    
+        
+      </div>
+      
+      
 
       <div id={'productsList'}>
         {allProducts.map(product => (

@@ -11,6 +11,7 @@ export default function MainContextProvider({children}) {
   const [allProducts, setAllProducts] = useState([]);
   const [product, setProduct] = useState();
 
+
   const getAllCategories = async () => {
     const data = await request(`${URL}categories`);
 
