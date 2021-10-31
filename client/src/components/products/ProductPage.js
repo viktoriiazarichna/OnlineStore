@@ -4,8 +4,18 @@ import './ProductPage.css';
 
 import {MainContext} from '../../context';
 import { URL } from '../../constants/constants';
+import {useSelector, useDispatch} from 'react-redux';
+
+import {
+  addAction,
+  deleteAction
+} from '../../redux/action-creators';
 
 export default function ProductPage() {
+
+  const counter = useSelector(({counter}) => counter);
+  const dispatch = useDispatch();
+
   const {product, getProduct} = useContext(MainContext);
 
   const {categoryName, productName} = useParams();
@@ -25,8 +35,12 @@ export default function ProductPage() {
             <p>Країна виробник - {product.country}</p>
             <p>Ціна - {product.price} грн. за {product.measurement} {product.measuringUnit}</p>
           </div>
+          <div>{counter}</div>
+          <button onClick={() => dispatch(addAction())}>add to cart</button>
+          <button onClick={() => dispatch(deleteAction())}>delete</button>
         </div>
       )}
     </>
   )
 }
+
