@@ -1,5 +1,6 @@
+const { Mongoose } = require('mongoose');
 const { responseCodes } = require('../constants');
-const { UserModel } = require('../database');
+const { UserModel, UserInRoleModel, UserRolesModel } = require('../database');
 const { ErrorHandler, errorMessages }  = require('../errors');
 const { tokenService } = require('../services');
 const { registrationValidator } = require('../validators');
@@ -46,8 +47,22 @@ module.exports = {
   getUser: async (req, res, next) => {
     try {
       const { email } = req.body.body;
-
+      
       const user = await UserModel.findOne({ email }).select('+password');
+      const userInRoles = await UserInRoleModel.find({ 'user_id.$id':  user._id });
+      let userRoles = '';
+      let rolesId = new Array();
+      
+      for (const userInRole of userInRoles){
+        for (const role of userInRole.role_id) {
+          rolesId.push(role._doc.oid);
+        }
+      } 
+      
+      let userRole = await UserRolesModel.find({ _id: {$in: rolesId } });
+      for (const role of userRole){
+        userRoles += role._doc.role_name+";";
+      }
 
       if (!user) {
         throw new ErrorHandler(
@@ -58,6 +73,7 @@ module.exports = {
       }
 
       req.user = user;
+      req.roles = userRoles;
 
       next();
     } catch (e) {

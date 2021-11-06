@@ -16,7 +16,7 @@ export default function UserContextProvider({children}) {
     localStorage.setItem('accessToken', data.accessToken);
     localStorage.setItem('refreshToken', data.refreshToken);
     localStorage.setItem('userId', data.user._id);
-    localStorage.setItem('role', data.user.role);
+    localStorage.setItem('role', data.roles);
   };
 
   const userRequestLogout = async (route, method, body = null, token) => {

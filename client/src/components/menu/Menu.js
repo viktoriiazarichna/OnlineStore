@@ -12,7 +12,7 @@ export default function Menu(props) {
 
   useEffect(() => {
     getAllCategories();
-  }, []);
+  }, [getAllCategories]);
 
   const selectCaterogy = (categoryName) => {
     getAllProductsOfOneCategory(categoryName);
