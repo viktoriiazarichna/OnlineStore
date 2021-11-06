@@ -5,7 +5,14 @@ import './Header-Footer.css';
 import { Menu } from '../menu';
 import { UserContext } from '../../context';
 
+import {useSelector, useDispatch} from 'react-redux';
+
+
 export default function Header() {
+
+  const counter = useSelector(({counter}) => counter);
+  // const dispatch = useDispatch();
+  
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
   const {user, userRequestLogout} = useContext(UserContext);
@@ -40,9 +47,9 @@ export default function Header() {
         )}
         
         <div id={'cart'}>
-            <Link to={'/cart'}> cart:0 </Link>
+            <Link to={'/cart'}> cart: {counter}</Link>
         </div>
-      </div>
+      </div>    
 
     </header>
   )

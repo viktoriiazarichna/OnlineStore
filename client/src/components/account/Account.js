@@ -12,7 +12,7 @@ export default function Account() {
 
   useEffect(() => {
     userRequest(id);
-  }, [accessToken, id, userRequest]);
+  }, [accessToken]);
 
   return (
     <div>

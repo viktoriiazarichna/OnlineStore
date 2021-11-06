@@ -7,6 +7,7 @@ const userShema = new Schema({
     type: String,
     required: true
   },
+ 
   email: {
     type: String,
     unique: true,
@@ -25,9 +26,9 @@ const userShema = new Schema({
     required: true,
     select: false
   },
-  _id: {
-    type: Schema.Types.ObjectID,
-    default: new Schema.Types.ObjectId()
+  role: {
+    type: String,
+    default: USER
   }
 });
 
