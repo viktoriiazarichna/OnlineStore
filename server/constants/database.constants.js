@@ -5,5 +5,7 @@ module.exports = {
   CATEGORY: 'category',
   ORDER: 'order',
   PRODUCT: 'product',
-  USER: 'user'
+  USER: 'user',
+  USERINROLE: 'UserInRole',
+  USERROLES: 'UserRoles'
 };

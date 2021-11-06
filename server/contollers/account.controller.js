@@ -54,6 +54,7 @@ module.exports = {
 
       res.status(responseCodes.OK).json({
         user: req.user,
+        roles: req.roles,
         ...tokenPair
       });
     } catch (e) {
