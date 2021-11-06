@@ -4,5 +4,7 @@ module.exports = {
   CategoryModel: require('./Category'),
   OrderModel: require('./Order'),
   ProductModel: require('./Product'),
-  UserModel: require('./User')
+  UserModel: require('./User'),
+  UserInRoleModel: require('./UserInRole'),
+  UserRolesModel: require('./UserRoles')
 };
