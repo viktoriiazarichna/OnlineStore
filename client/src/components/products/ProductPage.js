@@ -35,7 +35,7 @@ export default function ProductPage() {
             <p>Країна виробник - {product.country}</p>
             <p>Ціна - {product.price} грн. за {product.measurement} {product.measuringUnit}</p>
           </div>
-          <button onClick={() => dispatch(toggleItemInCart(product.id))}>В кошик</button>
+          <button onClick={() => dispatch(toggleItemInCart(product._id))}>В кошик</button>
           <div> { counter } </div>
         </div>
       )}
