@@ -6,15 +6,18 @@ import {MainContext} from '../../context';
 import { URL } from '../../constants/constants';
 import {useSelector, useDispatch} from 'react-redux';
 
+import { addItem } from '../../redux/cart/cart.actions';
+import { connect } from 'react-redux';
 
-import { toggleItemInCart } from '../../redux/action-creators';
 
-export default function ProductPage() {
+const mapDispatchToProps = dispatch => ({
+  addItem: item => dispatch(addItem(item))
+})
+
+ const ProductPage = ({ item, addItem }) => {
   const {product, getProduct} = useContext(MainContext);
 
   const {categoryName, productName} = useParams();
-  const counter = useSelector(({ counter }) => counter)
-  const dispatch = useDispatch();
   
   useEffect(() => {
     getProduct(categoryName, productName);
@@ -35,10 +38,11 @@ export default function ProductPage() {
             <p>Країна виробник - {product.country}</p>
             <p>Ціна - {product.price} грн. за {product.measurement} {product.measuringUnit}</p>
           </div>
-          <button onClick={() => dispatch(toggleItemInCart(product._id))}>В кошик</button>
-          <div> { counter } </div>
+          <button onClick={() => addItem(product)}>В кошик</button>
         </div>
       )}
     </>
   )
-}
+};
+
+export default connect(null, mapDispatchToProps)(ProductPage);

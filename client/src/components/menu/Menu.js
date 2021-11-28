@@ -39,7 +39,9 @@ export default function Menu(props) {
             </ul>
           </li>
         ))}
-        {(localStorage.getItem("role") === "user") && (<li> <Link to="/addProductPage">Add Product</Link>  </li>)}
+        {
+          (localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) && (<li> <Link to="/addProductPage">Add Product</Link>  </li>)
+        }
       </ul>
     </nav>
   )
