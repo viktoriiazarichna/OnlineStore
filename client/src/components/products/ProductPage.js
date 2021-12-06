@@ -4,7 +4,6 @@ import './ProductPage.css';
 
 import {MainContext} from '../../context';
 import { URL } from '../../constants/constants';
-import {useSelector, useDispatch} from 'react-redux';
 
 import { addItem } from '../../redux/cart/cart.actions';
 import { connect } from 'react-redux';
@@ -14,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item))
 })
 
- const ProductPage = ({ item, addItem }) => {
+const ProductPage = ({ item, addItem }) => {
   const {product, getProduct} = useContext(MainContext);
 
   const {categoryName, productName} = useParams();

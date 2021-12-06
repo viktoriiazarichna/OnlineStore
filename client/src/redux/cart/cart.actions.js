@@ -5,7 +5,7 @@ export const addItem = item => ({
   payload: item
 });
 
-export const removeItemById = id => ({
+export const removeItemById = _id => ({
     type: CartActionTypes.REMOVE_ITEM,
-    payload: id
+    payload: _id
   });
