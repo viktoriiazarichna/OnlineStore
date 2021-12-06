@@ -22,6 +22,7 @@ app.use(express.static(path.join(process.cwd(), 'static')));
 app.use('/categories', categoriesRouter);
 app.use('/account', accountRouter);
 app.use('/catalog', productRouter);
+app.use('/product', productRouter)
 
 app.listen(PORT, HOST, () => {
   console.log(`App listen ${PORT}`);

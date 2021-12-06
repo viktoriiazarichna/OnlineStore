@@ -30,6 +30,14 @@ export default function MainContextProvider({children}) {
     setProduct(data);
   };
 
+  const addProduct = async (route, method, body = null) => {
+    const data = await request(`${URL}product/${route}`, method, { body });
+    setProduct(data.product);
+    
+    localStorage.setItem('productId', data.product._id);
+    
+  };
+
   return (
     <MainContext.Provider value={{
       categories,
