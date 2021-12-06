@@ -1,50 +1,94 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { MainContextProvider } from '../../context';
+import { Redirect } from 'react-router-dom';
 
 
 export default function AddProductPage() {
+
+  const [addItemData, setAddItemData] = useState({
+    name: '',
+    price: '',
+    country: '',
+    measuringUnit: '',
+    measurement: '',
+    nameInEnglish: '',
+    image: '',
+    categoryName: ''
+  }); 
+  
+  // const { product, addProduct } = useContext(MainContextProvider);
+
+
+  const updateProductData = (e) => {
+    const {name, value} = e.target;
+
+    setAddItemData({...addItemData, [name]: value });
+  };
+
+
+  const addItemToDatabase = () => {
+    // addProduct('addItemToDatabase', 'POST', addItemData);
+
+
+    setAddItemData({
+      name: '',
+      price: '',
+      country: '',
+      measuringUnit: '',
+      measurement: '',
+      nameInEnglish: '',
+      image: '',
+      categoryName: ''
+    });
+
+
+  };
+
   return (
     <div>
       <h2> Add Product </h2>
       <div className={'form'}>  
           <div>
             <label>Name: </label>
-            <input type="text" name="name"/>
+            <input value={addItemData.name} onChange={updateProductData} type="text" name="name"/>
           </div>
           <div>
             <label>Price: </label>
-            <input type="number" name="price"/>
+            <input value={addItemData.price} onChange={updateProductData} type="number" name="price"/>
           </div>
           <div>
             <label>Country: </label>
-            <input type="text" name="country"/>
+            <input value={addItemData.country} onChange={updateProductData} type="text" name="country"/>
           </div>
           <div>
             <label>Measuring Unit: </label>
-            <input type="text" name="measuringUnit"/>
+            <input value={addItemData.measuringUnit} onChange={updateProductData} type="text" name="measuringUnit"/>
           </div>
           <div>
             <label>Measurement: </label>
-            <input type="number" name="measurement"/>
+            <input value={addItemData.measurement} onChange={updateProductData} type="number" name="measurement"/>
           </div>
           <div>
             <label>Name in English: </label>
-            <input type="text" name="nameEnglish"/>
+            <input value={addItemData.nameInEnglish} onChange={updateProductData} type="text" name="nameEnglish"/>
           </div>
           <div>
             <label>Image: </label>
-            <input type="text" name="image"/>
+            <input value={addItemData.image} onChange={updateProductData} type="text" name="image"/>
           </div>
           <div>
             <label>Category Name: </label>
-            <input type="text" name="categoryName"/>  
+            <input value={addItemData.categoryName} onChange={updateProductData} type="text" name="categoryName"/>  
       </div>
       
       
       </div>
         
-            
-      <button type="submit"> submit </button>
-      
+      <br/>   
+        <button onClick={addItemToDatabase}>Додати продукт</button>
+      <br/>
+
+      {/* {product && <Redirect to={`/catalog/${product.productName}`} />} */}
     </div>
   )
 }
