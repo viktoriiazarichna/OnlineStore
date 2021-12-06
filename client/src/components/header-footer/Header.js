@@ -4,8 +4,13 @@ import './Header-Footer.css';
 
 import { Menu } from '../menu';
 import { UserContext } from '../../context';
+import { connect } from 'react-redux';
 
-export default function Header() {
+const mapStateToProps = state => ({
+  itemsCount: state.cart.cartItems.reduce((acc, item) => acc += item.quantity, 0)
+});
+
+const Header = ({ onClick, theme, itemsCount }) => {
   const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 
   const {user, userRequestLogout} = useContext(UserContext);
@@ -40,10 +45,12 @@ export default function Header() {
         )}
         
         <div id={'cart'}>
-            <Link to={'/cart'}> cart:0 </Link>
+            <Link className="cart-button__counter" to={'/cart'}> cart:{itemsCount} </Link>
         </div>
       </div>
 
     </header>
   )
-}
+};
+
+export default connect(mapStateToProps)(Header);
