@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { MainContextProvider } from '../../context';
+import { MainContext } from '../../context';
 import { Redirect } from 'react-router-dom';
 
 
@@ -16,7 +16,7 @@ export default function AddProductPage() {
     categoryName: ''
   }); 
   
-  // const { product, addProduct } = useContext(MainContextProvider);
+  const {product, addProduct} = useContext(MainContext);
 
 
   const updateProductData = (e) => {
@@ -27,7 +27,7 @@ export default function AddProductPage() {
 
 
   const addItemToDatabase = () => {
-    // addProduct('addItemToDatabase', 'POST', addItemData);
+    addProduct('addOneProduct', 'POST', addItemData);
 
 
     setAddItemData({
@@ -88,7 +88,7 @@ export default function AddProductPage() {
         <button onClick={addItemToDatabase}>Додати продукт</button>
       <br/>
 
-      {/* {product && <Redirect to={`/catalog/${product.productName}`} />} */}
+      {product && <Redirect to={`/catalog/${product.productName}`} />}
     </div>
   )
 }
