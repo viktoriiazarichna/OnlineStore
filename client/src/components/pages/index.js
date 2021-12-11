@@ -5,6 +5,7 @@ import Contacts from "./Contacts";
 import Rules from "./Rules";
 import AddProductPage from './AddProductPage';
 import Cart from './Cart';
+import Order from './Order';
 
 export {
     MainPage,
@@ -12,6 +13,7 @@ export {
     Delivery,
     Contacts,
     Rules,
+    Order,
     AddProductPage,
-    Cart
+    Cart    
 };
