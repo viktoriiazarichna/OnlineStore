@@ -21,7 +21,20 @@ module.exports = {
   addOneProduct: async (req, res, next) => {
 
     try {
-      const addedProduct = await ProductModel.create(req.body);
+
+      const { name, price, country, measuringUnit, measurement, nameEnglish, image, categoryName } = req.body.body;
+     
+      const addedProduct = await ProductModel.create({
+        name,
+        price,
+        country,
+        measuringUnit,
+        measurement,
+        nameEnglish,
+        image,
+        categoryName
+      });
+
       res.status(responseCodesEnum.CREATED).json(addedProduct);
     } catch (e) {
       next(e);
