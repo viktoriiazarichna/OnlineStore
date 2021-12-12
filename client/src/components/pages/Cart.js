@@ -3,6 +3,9 @@ import { connect, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { URL } from '../../constants/constants';
 import { removeItemById } from '../../redux/cart/cart.actions';
+import { useHistory } from 'react-router-dom';
+
+
 
 const mapStateToProps = ({ cart: { cartItems }}) => ({
   items: cartItems,
@@ -12,6 +15,8 @@ const mapStateToProps = ({ cart: { cartItems }}) => ({
 const Cart = ({ items, total }) => {
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   return (
     <div>
@@ -25,11 +30,14 @@ const Cart = ({ items, total }) => {
               <p>Ціна - {item.price} грн. за {item.measurement} {item.measuringUnit}</p>
               <p>Кількість - {item.quantity}</p>
               <p>Всього - {item.price*item.quantity} грн.</p>
-              <button onClick={()=> dispatch(removeItemById(item._id))}>Видалити</button>
+              <button onClick={()=> dispatch(removeItemById(item._id))}>Видалити</button>                    
+              
             </div>
           ))}
       </div>
-      <span className="cart__total-value">Всього до сплати:{total}.00 грн</span>    
+      <span className="cart__total-value">Всього до сплати:{total}.00 грн</span>
+      <br/> 
+      <button onClick={()=> history.push("/order")}> Оформити замовлення </button>   
     </div>
   )
 };

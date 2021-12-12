@@ -11,7 +11,7 @@ export default function AddProductPage() {
     country: '',
     measuringUnit: '',
     measurement: '',
-    nameInEnglish: '',
+    nameEnglish: '',
     image: '',
     categoryName: ''
   }); 
@@ -40,7 +40,7 @@ export default function AddProductPage() {
       country: '',
       measuringUnit: '',
       measurement: '',
-      nameInEnglish: '',
+      nameEnglish: '',
       image: '',
       categoryName: ''
     });
@@ -74,7 +74,7 @@ export default function AddProductPage() {
           </div>
           <div>
             <label>Name in English: </label>
-            <input value={addItemData.nameInEnglish} onChange={updateProductData} type="text" name="nameEnglish"/>
+            <input value={addItemData.nameEnglish} onChange={updateProductData} type="text" name="nameEnglish"/>
           </div>
           <div>
             <label>Image: </label>

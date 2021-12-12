@@ -1,5 +1,5 @@
 const { ProductModel } = require('../database');
-const { responseCodesEnum } = require('../constants');
+const { responseCodes } = require('../constants');
 
 module.exports = {
   getAllProducts: async (req, res) => {
@@ -21,8 +21,21 @@ module.exports = {
   addOneProduct: async (req, res, next) => {
 
     try {
-      const addedProduct = await ProductModel.create(req.body);
-      res.status(responseCodesEnum.CREATED).json(addedProduct);
+
+      const { name, price, country, measuringUnit, measurement, nameEnglish, image, categoryName } = req.body;
+     
+      const addedProduct = await ProductModel.create({
+        name,
+        price,
+        country,
+        measuringUnit,
+        measurement,
+        nameEnglish,
+        image,
+        categoryName
+      });
+
+      res.status(responseCodes.CREATED).json(addedProduct);
     } catch (e) {
       next(e);
     }
