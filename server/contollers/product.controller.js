@@ -22,17 +22,16 @@ module.exports = {
 
     try {
 
-      const { name, price, country, measuringUnit, measurement, nameEnglish, image, categoryName } = req.body;
-     
+      const { name, price, country, measuringUnit, measurement, nameEnglish, image, category } = req.body.body;
       const addedProduct = await ProductModel.create({
-        name,
-        price,
-        country,
-        measuringUnit,
-        measurement,
-        nameEnglish,
-        image,
-        categoryName
+        name: name,
+        price: price,
+        country: country,
+        measuringUnit: measuringUnit,
+        measurement: measurement,
+        nameEnglish: nameEnglish,
+        categoryName: category,
+        image: image
       });
 
       res.status(responseCodes.CREATED).json(addedProduct);

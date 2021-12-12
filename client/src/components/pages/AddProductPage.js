@@ -13,7 +13,7 @@ export default function AddProductPage() {
     measurement: '',
     nameEnglish: '',
     image: '',
-    categoryName: ''
+    category: ''
   }); 
   
   const {product, addProduct} = useContext(MainContext);
@@ -42,7 +42,7 @@ export default function AddProductPage() {
       measurement: '',
       nameEnglish: '',
       image: '',
-      categoryName: ''
+      category: ''
     });
 
 
@@ -82,10 +82,10 @@ export default function AddProductPage() {
           </div>
           <div>
             <label>Category: </label>
-            <select name="categories" required="required">
+            <select name="categories" required="required" onChange={updateProductData} type="text" name="category">
               <option value="">Выберите значение</option>
               {categories.map(category => (
-                <option value={category._id}>
+                <option value={category.nameEnglish}>
                   {category.nameEnglish}
                 </option>
               ))}
