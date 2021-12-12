@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { MainContext } from '../../context';
 import { Redirect } from 'react-router-dom';
 
@@ -17,7 +17,11 @@ export default function AddProductPage() {
   }); 
   
   const {product, addProduct} = useContext(MainContext);
+  const {categories, getAllCategories} = useContext(MainContext);
 
+  useEffect(() => {
+    getAllCategories();
+  }, []);
 
   const updateProductData = (e) => {
     const {name, value} = e.target;
@@ -77,8 +81,15 @@ export default function AddProductPage() {
             <input value={addItemData.image} onChange={updateProductData} type="text" name="image"/>
           </div>
           <div>
-            <label>Category Name: </label>
-            <input value={addItemData.categoryName} onChange={updateProductData} type="text" name="categoryName"/>  
+            <label>Category: </label>
+            <select name="categories" required="required">
+              <option value="">Выберите значение</option>
+              {categories.map(category => (
+                <option value={category._id}>
+                  {category.nameEnglish}
+                </option>
+              ))}
+            </select>
       </div>
       
       
