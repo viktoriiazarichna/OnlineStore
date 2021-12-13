@@ -6,6 +6,6 @@ module.exports = {
   ORDER: 'order',
   PRODUCT: 'product',
   USER: 'user',
-  USERINROLE: 'UserInRole',
-  USERROLES: 'UserRoles'
+  USERINROLE: 'userinrole',
+  USERROLES: 'userroles'  
 };

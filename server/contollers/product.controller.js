@@ -22,7 +22,10 @@ module.exports = {
 
     try {
 
-      const { name, price, country, measuringUnit, measurement, nameEnglish, image, category } = req.body.body;
+      const { name, price, country, measuringUnit, measurement, nameEnglish, image, category, categoryName } = req.body;
+
+      const { ObjectId } = require('mongodb');
+      const categoryid = ObjectId(category);
       const addedProduct = await ProductModel.create({
         name: name,
         price: price,
@@ -30,7 +33,8 @@ module.exports = {
         measuringUnit: measuringUnit,
         measurement: measurement,
         nameEnglish: nameEnglish,
-        categoryName: category,
+        category: categoryid,
+        categoryName: categoryName,
         image: image
       });
 

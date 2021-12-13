@@ -13,7 +13,8 @@ export default function AddProductPage() {
     measurement: '',
     nameEnglish: '',
     image: '',
-    category: ''
+    category: '',
+    categoryName: ''
   }); 
   
   const {product, addProduct} = useContext(MainContext);
@@ -42,7 +43,8 @@ export default function AddProductPage() {
       measurement: '',
       nameEnglish: '',
       image: '',
-      category: ''
+      category: '',
+      categoryName: ''
     });
 
 
@@ -82,24 +84,27 @@ export default function AddProductPage() {
           </div>
           <div>
             <label>Category: </label>
-            <select name="categories" required="required" onChange={updateProductData} type="text" name="category">
+            <select required="required" onChange={updateProductData} type="text" name="category">
               <option value="">Выберите значение</option>
               {categories.map(category => (
-                <option value={category.nameEnglish}>
+                <option value={category._id} >
                   {category.nameEnglish}
                 </option>
               ))}
             </select>
-      </div>
-      
-      
-      </div>
+          </div>
+          <div>
+            <label>Category name: </label>
+            <input value={(categories.find(category => category._id === addItemData.category)) ?
+            categories.find(category => category._id === addItemData.category).nameEnglish: ''} onChange={updateProductData} type="text" name="categoryName"/>
+          </div>
+        </div>
         
-      <br/>   
-        <button onClick={addItemToDatabase}>Додати продукт</button>
-      <br/>
+        <br/>   
+          <button onClick={addItemToDatabase}>Додати продукт</button>
+        <br/>
 
-      {product && <Redirect to={`/catalog/${product.productName}`} />}
+        {product && <Redirect to={`/catalog/${product.productName}`} />}
     </div>
   )
 }
