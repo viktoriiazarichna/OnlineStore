@@ -47,6 +47,10 @@ const Header = ({ onClick, theme, itemsCount }) => {
         <div id={'cart'}>
             <Link className="cart-button__counter" to={'/cart'}> cart:{itemsCount} </Link>
         </div>
+      
+        <div>
+          {(localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) && (<button onClick={()=> history.push("/addProductPage")}>ADMIN PAGE</button>)}
+        </div>
       </div>
 
     </header>

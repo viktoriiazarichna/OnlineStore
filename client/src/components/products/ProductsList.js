@@ -36,12 +36,7 @@ export default function ProductsList() {
   return (
     <div>
       <h2>{pageName}</h2>
-      <div> 
-
-        {(localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) && (<button onClick={()=> history.push("/addProductPage")}>Add Product</button>)}
-    
-        
-      </div>
+      
       
       
 

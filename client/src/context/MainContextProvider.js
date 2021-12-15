@@ -9,7 +9,8 @@ export default function MainContextProvider({children}) {
 
   const [categories, setCategories] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState([]);
+  const [order, setOrder] = useState([]);
 
 
   const getAllCategories = async () => {
@@ -35,11 +36,19 @@ export default function MainContextProvider({children}) {
     setProduct(data.product);
     console.log(body)
   };
+
   const uploadFile = async (route, method, body = null) => {
     const data = await request(`${URL}catalog/${route}`, method, { body });
     setProduct(data.product);
     console.log(body)
   };
+
+  const addOrder = async (route, method, body = null) => {
+    const data = await request(`${URL}order/${route}`, method, { body });
+    setOrder(data.order);
+    console.log(body)
+  };
+
 
   return (
     <MainContext.Provider value={{
@@ -50,7 +59,9 @@ export default function MainContextProvider({children}) {
       product,
       getProduct,
       addProduct,
-      uploadFile
+      uploadFile,
+      order,
+      addOrder
     }}>
       {children}
     </MainContext.Provider>
