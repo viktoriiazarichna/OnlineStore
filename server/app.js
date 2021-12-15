@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 const { envConstants: { HOST, PORT, MONGOOSE_DB } } = require('./constants');
 const { categoriesRouter, accountRouter, productRouter } = require('./routes');
-const { addOneProduct } = require('./contollers/product.controller');
+//const { addOneProduct } = require('./contollers/product.controller');
 
 const app = express();
 
@@ -16,17 +16,18 @@ mongoose.connect(MONGOOSE_DB, {
   useUnifiedTopology: true
 });
 
+app.use(fileUpload({}));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(process.cwd(), 'static')));
 
-app.use(fileUpload( {}));
+
 
 app.use('/categories', categoriesRouter);
 app.use('/account', accountRouter);
 app.use('/catalog', productRouter);
-app.use('/product', productRouter);
+//app.use('/product', productRouter);
 
 app.listen(PORT, HOST, () => {
   console.log(`App listen ${PORT}`);

@@ -35,6 +35,11 @@ export default function MainContextProvider({children}) {
     setProduct(data.product);
     console.log(body)
   };
+  const uploadFile = async (route, method, body = null) => {
+    const data = await request(`${URL}catalog/${route}`, method, { body });
+    setProduct(data.product);
+    console.log(body)
+  };
 
   return (
     <MainContext.Provider value={{
@@ -44,7 +49,8 @@ export default function MainContextProvider({children}) {
       getAllProductsOfOneCategory,
       product,
       getProduct,
-      addProduct
+      addProduct,
+      uploadFile
     }}>
       {children}
     </MainContext.Provider>

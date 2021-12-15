@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { MainContext } from '../../context';
-import { Redirect } from 'react-router-dom';
-
+import { URL } from '../../constants/constants';
 
 export default function AddProductPage() {
 
@@ -16,7 +15,7 @@ export default function AddProductPage() {
     category: '',
     categoryName: ''
   }); 
-  
+
   const {product, addProduct} = useContext(MainContext);
   const {categories, getAllCategories} = useContext(MainContext);
 
@@ -26,14 +25,25 @@ export default function AddProductPage() {
 
   const updateProductData = (e) => {
     const {name, value} = e.target;
-
     setAddItemData({...addItemData, [name]: value });
   };
+  const setcategoryName = (e) => {
+    const {value} = e.target;
+    const cname = categories.find(category => category._id === value).nameEnglish;
+    setAddItemData({...addItemData, categoryName: cname,
+      category: value});
+  }
+  const fileUploadHandler = (e) => {
+    setAddItemData({...addItemData, ['image']: "images/products/" + e.target.files[0].name });
+  }
 
 
   const addItemToDatabase = () => {
-    addProduct('addOneProduct', 'POST', addItemData);
-
+    try {
+      addProduct('addOneProduct', 'POST', addItemData);
+    } catch (ex) {
+      console.log(ex);
+    }
 
     setAddItemData({
       name: '',
@@ -46,8 +56,6 @@ export default function AddProductPage() {
       category: '',
       categoryName: ''
     });
-
-
   };
 
   return (
@@ -79,12 +87,8 @@ export default function AddProductPage() {
             <input value={addItemData.nameEnglish} onChange={updateProductData} type="text" name="nameEnglish"/>
           </div>
           <div>
-            <label>Image: </label>
-            <input value={addItemData.image} onChange={updateProductData} type="text" name="image"/>
-          </div>
-          <div>
             <label>Category: </label>
-            <select required="required" onChange={updateProductData} type="text" name="category">
+            <select required="required" onChange={setcategoryName} type="text" name="category">
               <option value="">Выберите значение</option>
               {categories.map(category => (
                 <option value={category._id} >
@@ -96,15 +100,19 @@ export default function AddProductPage() {
           <div>
             <label>Category name: </label>
             <input value={(categories.find(category => category._id === addItemData.category)) ?
-            categories.find(category => category._id === addItemData.category).nameEnglish: ''} onChange={updateProductData} type="text" name="categoryName"/>
+              categories.find(category => category._id === addItemData.category).nameEnglish: ''} onChange={updateProductData} type="text" name="categoryName"/>
+          </div>
+          <div>
+            <form action="http://localhost:5000/catalog/uploadFile" method="POST" encType="multipart/form-data" >
+              <label>Image: </label>
+              <input onChange={(event)=> fileUploadHandler(event)} type="file" name="image"/>
+              <div></div>
+              <br/>   
+                <button type="submit" onClick={addItemToDatabase}>Додати продукт</button>
+              <br/>
+            </form>
           </div>
         </div>
-        
-        <br/>   
-          <button onClick={addItemToDatabase}>Додати продукт</button>
-        <br/>
-
-        {product && <Redirect to={`/catalog/${product.productName}`} />}
     </div>
   )
 }

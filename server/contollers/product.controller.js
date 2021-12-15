@@ -22,8 +22,7 @@ module.exports = {
 
     try {
 
-      const { name, price, country, measuringUnit, measurement, nameEnglish, image, category, categoryName } = req.body;
-
+      const { name, price, country, measuringUnit, measurement, nameEnglish, image, category, categoryName } = req.body.body;
       const { ObjectId } = require('mongodb');
       const categoryid = ObjectId(category);
       const addedProduct = await ProductModel.create({
@@ -39,6 +38,22 @@ module.exports = {
       });
 
       res.status(responseCodes.CREATED).json(addedProduct);
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  uploadFile: async (req, res, next) => {
+
+    try {
+      const newpath =  "F:\\OnlineStore\\server\\static\\images\\products\\";
+      let fileName = req.files.image.name;
+      req.files.image.mv(`${newpath}${fileName}`, (err) => {
+        if (err) {
+          res.status(500).send({ message: "File upload failed", code: 200 });
+        }
+        res.status(200).send({ message: "File Uploaded", code: 200 });
+      });
     } catch (e) {
       next(e);
     }
