@@ -25,6 +25,7 @@ export default function Login() {
       email: '',
       password: ''
     });
+
   };
 
   return (
@@ -47,7 +48,7 @@ export default function Login() {
         <Link to="/registration" className={'regOrLogBtn'}>зареєструватись</Link> 
       </div>
       
-      {user && <Redirect to={`/account/${user._id}`} />}
+      {user && <Redirect push to={`/account/${user._id}`} />}
     </div>
   )
 }

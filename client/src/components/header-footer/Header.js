@@ -23,6 +23,8 @@ const Header = ({ onClick, theme, itemsCount }) => {
   const logout = () => {
     const accessToken = localStorage.getItem('accessToken');
     userRequestLogout('logout', 'PUT', {}, accessToken);
+    localStorage.clear();
+    window.location.reload(false);
   };
 
   return (
@@ -35,7 +37,8 @@ const Header = ({ onClick, theme, itemsCount }) => {
       </h1>
 
       <div className={'rightHeaderBlock'}>
-        {!user ? <Link to={'/login'} className={'headerLink'}> Увійти </Link> : (
+        
+        {!user ? <Link to={'/login'} className={'headerLink'} > Увійти </Link> : (
           <>
             <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}>
               {user.username[0]}
@@ -47,12 +50,8 @@ const Header = ({ onClick, theme, itemsCount }) => {
         <div id={'cart'}>
             <Link className="cart-button__counter" to={'/cart'}> cart:{itemsCount} </Link>
         </div>
-      
-        <div>
-          <Link to={'/addProductPage'}> 
-          {(localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) && ("ADMIN")}
-          </Link>
-          
+        <div className={'adminRight'}>
+          {(user && localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) ? <Link to={'/addProductPage'}> ADMIN </Link> : <div></div>}
         </div>
       </div>
 
