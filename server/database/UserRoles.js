@@ -13,8 +13,12 @@ const userrolesShema = new Schema({
     },
     parent_role: {
       type: Schema.Types.ObjectID,
-      ref: 'userroles'
+      ref: USERROLES
     }
+  });
+
+  userrolesShema.pre('findOne', function() {
+    this.populate('parent_role');
   });
   
   module.exports = model(USERROLES, userrolesShema);
