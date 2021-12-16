@@ -35,6 +35,7 @@ header > span, footer span {
 }
 #cart {
   margin-left: 10px;
+  margin-right: 10px;
 }
 #userBtn {
   width: 30px;
