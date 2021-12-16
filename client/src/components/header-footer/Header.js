@@ -49,7 +49,10 @@ const Header = ({ onClick, theme, itemsCount }) => {
         </div>
       
         <div>
-          {(localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) && (<button onClick={()=> history.push("/addProductPage")}>ADMIN PAGE</button>)}
+          <Link to={'/addProductPage'}> 
+          {(localStorage.getItem('role') != null && localStorage.getItem('role').indexOf('Admin') !== -1) && ("ADMIN")}
+          </Link>
+          
         </div>
       </div>
 

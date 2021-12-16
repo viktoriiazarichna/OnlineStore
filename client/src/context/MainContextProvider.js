@@ -44,7 +44,7 @@ export default function MainContextProvider({children}) {
   };
 
   const addOrder = async (route, method, body = null) => {
-    const data = await request(`${URL}order/${route}`, method, { body });
+    const data = await request(`${URL}order`, method, { body });
     setOrder(data.order);
     console.log(body)
   };

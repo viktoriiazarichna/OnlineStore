@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
 
 const { envConstants: { HOST, PORT, MONGOOSE_DB } } = require('./constants');
-const { categoriesRouter, accountRouter, productRouter } = require('./routes');
+const { categoriesRouter, accountRouter, productRouter, orderRouter } = require('./routes');
 //const { addOneProduct } = require('./contollers/product.controller');
 
 const app = express();
@@ -27,6 +27,7 @@ app.use(express.static(path.join(process.cwd(), 'static')));
 app.use('/categories', categoriesRouter);
 app.use('/account', accountRouter);
 app.use('/catalog', productRouter);
+app.use('/order', orderRouter);
 //app.use('/product', productRouter);
 
 app.listen(PORT, HOST, () => {

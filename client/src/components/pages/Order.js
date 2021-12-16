@@ -7,6 +7,9 @@ export default function Order() {
   const {order, addOrder} = useContext(MainContext);
 
   const [addOrderData, setAddOrderData] = useState({
+    name: '',
+    phone: '',
+    address: '',
     delivery: '',
     payment: '',
     comment: ''    
@@ -31,11 +34,16 @@ export default function Order() {
       console.log(ex);
     }
     setAddOrderData({
+      name: '',
+      phone: '',
+      address: '',
       delivery: '',
       payment: '',
       comment: '' 
     });
-  }
+  };
+
+
 
   return (
     <div>
@@ -43,31 +51,30 @@ export default function Order() {
       <div className={'form'}>  
           <div>
             <label>Контактні дані </label>
-            <input type="text" name="name"/>
-            <input type="number" name="phone"/>
-            <input type="text" name="address"/>            
+            <input type="text" name="name" placeholder="enter your name"/>
+            <input type="number" name="phone" placeholder="enter your phone number"/>
+            <input type="text" name="address" placeholder="enter your address"/>            
           </div>
-          <div>
-            <div>Види доставки:</div>
-            <label><input type="radio" checked={delivery} onChange={handleDeliveryChange}/>Адресна доставка кур'єром</label>
-            <br/>
-            <label><input type="radio" onChange={handleDeliveryChange}/>Самовивіз зі складу</label>         
-          </div>
-          <br/>         
-          <div>
-            <div>Способи оплати:</div>
-            <label><input type="radio" checked={payment} onChange={handlePaymentChange}/>Оплата готівкою при отриманні</label>
-            <br/>
-            <label><input type="radio" onChange={handlePaymentChange}/>Оплата картою при отриманні</label>
-            <br/>
-            <label><input type="radio" onChange={handlePaymentChange}/>Оплата онлайн</label>        
-            
-          </div>
+          <br/> 
+          <label>Види доставки:</label>
+            <select required="required" onChange={handleDeliveryChange} type="text" name="delivery">
+              <option value="Адресна доставка кур'єром">Адресна доставка кур'єром</option>
+              <option value="Самовивіз зі складу">Самовивіз зі складу</option>
+            </select>
+          <br/>   
+          <label>Способи оплати:</label>
+            <select required="required" onChange={handlePaymentChange} type="text" name="payment">
+              <option value="Оплата готівкою при отриманні">Оплата готівкою при отриманні</option>
+              <option value="Оплата картою при отриманні">Оплата картою при отриманні</option>
+              <option value="Оплата онлайн">Оплата онлайн</option>
+            </select>        
           <br/>  
           <div>
             <label>Додати коментар до замовлення </label>
             <input type="text" name="comment"/>            
           </div>
+
+         
 
           <br/>   
               <button type="submit" onClick={addOrderToDatabase}>Підтвердити замовлення</button>
@@ -77,4 +84,5 @@ export default function Order() {
       
     </div>
   )
-}
+};
+
