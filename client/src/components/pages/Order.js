@@ -15,21 +15,26 @@ export default function Order() {
     comment: ''    
   }); 
 
-  const [delivery, setDelivery] = useState(false);
-  const [payment, setPayment] = useState(false);
-  
-  const handlePaymentChange = () => {
-    setPayment(!payment);
+
+  const deliveryOptions = [
+    "Адресна доставка кур'єром",
+    "Самовивіз зі складу"
+  ];
+
+  const paymentOptions = [
+    "Оплата готівкою при отриманні",
+    "Оплата картою при отриманні",
+    "Оплата онлайн"
+  ];
+
+  const updateOrderData = (e) => {
+    const {name, value} = e.target;
+    setAddOrderData({...addOrderData, [name]: value });
   };
-
-  const handleDeliveryChange = () => {
-    setDelivery(!delivery);
-  }
-
 
   const addOrderToDatabase = () => {
     try {
-      addOrder('addOrder', 'POST', addOrderData);
+      addOrder('addOneOrder', 'POST', addOrderData);
     } catch (ex) {
       console.log(ex);
     }
@@ -50,28 +55,29 @@ export default function Order() {
       <h2> Моє замовлення: </h2>
       <div className={'form'}>  
           <div>
-            <label>Контактні дані </label>
-            <input type="text" name="name" placeholder="enter your name"/>
-            <input type="number" name="phone" placeholder="enter your phone number"/>
-            <input type="text" name="address" placeholder="enter your address"/>            
+            <label>Контактні дані</label>
+            <input value={addOrderData.name} onChange={updateOrderData} type="text" name="name" placeholder="enter your name"/>
+            <input value={addOrderData.phone} onChange={updateOrderData} type="number" name="phone" placeholder="enter your phone number"/>
+            <input value={addOrderData.address} onChange={updateOrderData} type="text" name="address" placeholder="enter your address"/>            
           </div>
           <br/> 
           <label>Види доставки:</label>
-            <select required="required" onChange={handleDeliveryChange} type="text" name="delivery">
-              <option value="Адресна доставка кур'єром">Адресна доставка кур'єром</option>
-              <option value="Самовивіз зі складу">Самовивіз зі складу</option>
+            <select value={addOrderData.delivery} onChange={updateOrderData} type="text" name="delivery">
+              {deliveryOptions.map((deliveryOption) => (
+              <option value={deliveryOption}>{deliveryOption}</option>
+            ))}
             </select>
           <br/>   
           <label>Способи оплати:</label>
-            <select required="required" onChange={handlePaymentChange} type="text" name="payment">
-              <option value="Оплата готівкою при отриманні">Оплата готівкою при отриманні</option>
-              <option value="Оплата картою при отриманні">Оплата картою при отриманні</option>
-              <option value="Оплата онлайн">Оплата онлайн</option>
+            <select value={addOrderData.payment} onChange={updateOrderData} type="text" name="payment">
+            {paymentOptions.map((paymentOption) => (
+              <option value={paymentOption}>{paymentOption}</option>
+            ))}
             </select>        
           <br/>  
           <div>
             <label>Додати коментар до замовлення </label>
-            <input type="text" name="comment"/>            
+            <input value={addOrderData.comment} onChange={updateOrderData} type="text" name="comment"/>            
           </div>
 
          

@@ -37,10 +37,10 @@ const orderSchema = new Schema({
     required: true
   },  
 
-  // products: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: PRODUCT
-  // }],
+  products: [{
+    type: Schema.Types.ObjectId,
+    ref: PRODUCT
+  }],
 
   totalPrice: {
     type: Number

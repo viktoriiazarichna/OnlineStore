@@ -8,8 +8,6 @@ module.exports = {
     try {
 
       const { name, phone, address, delivery, payment, comment } = req.body.body;
-      const { ObjectId } = require('mongodb');
-      const categoryid = ObjectId(category);
       const addedOrder = await OrderModel.create({
         name: name,
         phone: phone,

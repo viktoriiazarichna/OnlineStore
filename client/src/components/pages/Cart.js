@@ -5,6 +5,8 @@ import { URL } from '../../constants/constants';
 import { removeItemById } from '../../redux/cart/cart.actions';
 import { useHistory } from 'react-router-dom';
 
+import './cart.css';
+
 
 
 const mapStateToProps = ({ cart: { cartItems }}) => ({
@@ -21,23 +23,29 @@ const Cart = ({ items, total }) => {
   return (
     <div>
       <h2> Корзина </h2>  
-      <div className='cart__list'>
+      <div>
         {
           items.map(item => (
-            <div>
-              <h3 className={'productName'}>{item.name}</h3>
-              <img src={`${URL}${item.image}`} alt={item.name} className={'productListImage'} />
-              <p>Ціна - {item.price} грн. за {item.measurement} {item.measuringUnit}</p>
-              <p>Кількість - {item.quantity}</p>
-              <p>Всього - {item.price*item.quantity} грн.</p>
+            <div className='productInCart'>              
+              <img src={`${URL}${item.image}`} alt={item.name} className='itemImage' />
+              <h3 className='itemName'>{item.name}</h3>
+              <div className='itemInfo'>
+                <p>Ціна - {item.price} грн за {item.measurement} {item.measuringUnit}</p>
+                <p>Кількість - {item.quantity}</p>
+                <p>Всього - {item.price*item.quantity} грн</p>
+              </div>
+
               <button onClick={()=> dispatch(removeItemById(item._id))}>Видалити</button>                    
               
             </div>
           ))}
       </div>
-      <span className="cart__total-value">Всього до сплати:{total}.00 грн</span>
-      <br/> 
-      <button onClick={()=> history.push("/order")}> Оформити замовлення </button>   
+      
+      <div className="order">Всього до сплати: {total}.00 грн</div>
+      <div className="order">        
+        <button onClick={()=> history.push("/order")}> Оформити замовлення</button>
+      </div>
+         
     </div>
   )
 };
