@@ -1,0 +1,35 @@
+.productInCart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    background-color: aliceblue;  
+    margin-bottom: 10px;
+    padding: 2px;
+}
+
+.itemImage {    
+    height: 100px;
+    width: 100px;  
+    margin: 2px;  
+}
+
+.itemName {
+    width: 200px;
+    
+}
+
+.itemInfo {
+    width: 200px;
+}
+
+
+
+.order {
+    display: flex;    
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+
+
+
