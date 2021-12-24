@@ -1,8 +1,13 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { MainContext } from '../../context';
+import { connect, useDispatch } from 'react-redux';
 
+const mapStateToProps = ({ cart: { cartItems }}) => ({
+  items: cartItems,
+  total: cartItems.reduce((acc, item) => acc += item.price * item.quantity, 0)
+});
 
-export default function Order() {
+const Order = ({ items, total }) => {
 
   const {order, addOrder} = useContext(MainContext);
 
@@ -12,7 +17,9 @@ export default function Order() {
     address: '',
     delivery: '',
     payment: '',
-    comment: ''    
+    comment: '',
+    totalPrice: '',
+    products: [] 
   }); 
 
 
@@ -29,6 +36,16 @@ export default function Order() {
 
   const updateOrderData = (e) => {
     const {name, value} = e.target;
+
+    if (!addOrderData.totalPrice || !addOrderData.products){
+      let productsArray = [];
+      items.map(item => (
+        productsArray.push({ product: item._id, quantity: item.quantity})
+      ));
+
+      setAddOrderData({...addOrderData, products: productsArray, totalPrice: total, [name]: value });
+      return;
+    }
     setAddOrderData({...addOrderData, [name]: value });
   };
 
@@ -44,7 +61,9 @@ export default function Order() {
       address: '',
       delivery: '',
       payment: '',
-      comment: '' 
+      comment: '',
+      totalPrice: '',
+      products: ''
     });
   };
 
@@ -53,7 +72,7 @@ export default function Order() {
   return (
     <div>
       <h2> Моє замовлення: </h2>
-      <div className={'form'}>  
+      <div className={'form'}> 
           <div>
             <label>Контактні дані</label>
             <input value={addOrderData.name} onChange={updateOrderData} type="text" name="name" placeholder="enter your name"/>
@@ -92,3 +111,4 @@ export default function Order() {
   )
 };
 
+export default connect(mapStateToProps)(Order);

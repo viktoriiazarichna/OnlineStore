@@ -7,14 +7,16 @@ module.exports = {
 
     try {
 
-      const { name, phone, address, delivery, payment, comment } = req.body.body;
+      const { name, phone, address, delivery, payment, comment, totalPrice, products } = req.body.body;
       const addedOrder = await OrderModel.create({
         name: name,
         phone: phone,
         address: address,
         delivery: delivery,
         payment: payment,
-        comment: comment
+        comment: comment,
+        products: products,
+        totalPrice: totalPrice
       });
 
       res.status(responseCodes.CREATED).json(addedOrder);
