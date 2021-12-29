@@ -1,0 +1,4 @@
+Для відновлення БД: mongorestore --db online-supermarket path_to_project\OnlineStore\online-supermarket_DB
+
+ADMIN login: viktoriiazarichna@gmail.com
+ADMIN password: 1234
