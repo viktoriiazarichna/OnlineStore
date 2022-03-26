@@ -1,4 +1,4 @@
 module.exports = {
-  accountMiddlewar: require('./account.middlewar'),
+  accountMiddleware: require('./account.middleware'),
   fileMiddleware: require('./file.middleware') 
 };

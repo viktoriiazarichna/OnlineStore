@@ -1,21 +1,21 @@
 const router = require('express').Router();
 
 const { accountController } = require('../contollers');
-const { accountMiddlewar } = require('../middlewars');
+const { accountMiddleware } = require('../middlewars');
 
 router.post('/registration',
-  accountMiddlewar.checkIsEmailBusy,
-  accountMiddlewar.checkIsRegUserDataValidity,
+  accountMiddleware.checkIsEmailBusy,
+  accountMiddleware.checkIsRegUserDataValidity,
   accountController.createUser
 );
 
 router.post('/login',
-  accountMiddlewar.getUser,
+  accountMiddleware.getUser,
   accountController.loginUser
 );
 
 router.put('/logout',
-  accountMiddlewar.checkAccessToken,
+  accountMiddleware.checkAccessToken,
   accountController.logoutUser
 );
 
