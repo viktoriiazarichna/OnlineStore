@@ -8,3 +8,4 @@ server/.env
 DB_lookup.js
 DB_Products-Categories.js
 /node_modules
+/.vscode
