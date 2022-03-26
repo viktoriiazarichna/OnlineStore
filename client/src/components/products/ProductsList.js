@@ -1,13 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import './ProductsList.css';
-
 
 import { MainContext } from "../../context";
 import { URL } from '../../constants/constants';
-
-
-
+import './ProductsList.css';
 
 export default function ProductsList() {
   const {allProducts, getAllProductsOfOneCategory} = useContext(MainContext);

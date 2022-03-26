@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import './Header-Footer.css';
+import { connect } from 'react-redux';
 
 import { Menu } from '../menu';
 import { UserContext } from '../../context';
-import { connect } from 'react-redux';
+import './Header-Footer.css';
 
 const mapStateToProps = state => ({
   itemsCount: state.cart.cartItems.reduce((acc, item) => acc += item.quantity, 0)
@@ -40,7 +40,7 @@ const Header = ({ onClick, theme, itemsCount }) => {
         
         {!user ? <Link to={'/login'} className={'headerLink'} > Увійти </Link> : (
           <>
-            <div onClick={() => history.push(`/account/${user._id}`)} id={'userBtn'}>
+            <div onClick={() => history.push(`/accounts/${user._id}`)} id={'userBtn'}>
               {user.username[0]}
             </div>
             <button onClick={logout} id={'exit'}> Вийти </button>

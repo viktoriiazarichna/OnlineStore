@@ -20,25 +20,25 @@ export default function MainContextProvider({children}) {
   };
 
   const getAllProductsOfOneCategory = async (categoryName) => {
-    const data = await request(`${URL}catalog/${categoryName}`);
+    const data = await request(`${URL}catalogs/${categoryName}`);
 
     setAllProducts(data);
   };
 
   const getProduct = async (categoryName, productName) => {
-    const data = await request(`${URL}catalog/${categoryName}/${productName}`);
+    const data = await request(`${URL}catalogs/${categoryName}/${productName}`);
 
     setProduct(data);
   };
 
   const addProduct = async (route, method, body = null) => {
-    const data = await request(`${URL}catalog/${route}`, method, { body });
+    const data = await request(`${URL}catalogs/${route}`, method, { body });
     setProduct(data.product);
     console.log(body)
   };
 
   const uploadFile = async (route, method, body = null) => {
-    const data = await request(`${URL}catalog/${route}`, method, { body });
+    const data = await request(`${URL}catalogs/${route}`, method, { body });
     setProduct(data.product);
     console.log(body)
   };

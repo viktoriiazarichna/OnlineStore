@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
+
 import { URL } from '../../constants/constants';
 import { removeItemById } from '../../redux/cart/cart.actions';
-import { useHistory } from 'react-router-dom';
-
 import './cart.css';
-
-
 
 const mapStateToProps = ({ cart: { cartItems }}) => ({
   items: cartItems,
@@ -43,7 +40,7 @@ const Cart = ({ items, total }) => {
       
       <div className="order">Всього до сплати: {total}.00 грн</div>
       <div className="order">        
-        <button onClick={()=> history.push("/order")}> Оформити замовлення</button>
+        <button onClick={()=> history.push("/orders")}> Оформити замовлення</button>
       </div>
          
     </div>

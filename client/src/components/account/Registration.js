@@ -66,7 +66,7 @@ export default function Registration() {
         <Link to="/login" className={'regOrLogBtn'}>увійти</Link>
       </div>
 
-      {user && <Redirect to={`/account/${user._id}`} />}
+      {user && <Redirect to={`/accounts/${user._id}`} />}
     </div>
   )
 }

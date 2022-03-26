@@ -1,6 +1,6 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { MainContext } from '../../context';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 const mapStateToProps = ({ cart: { cartItems }}) => ({
   items: cartItems,
@@ -9,7 +9,7 @@ const mapStateToProps = ({ cart: { cartItems }}) => ({
 
 const Order = ({ items, total }) => {
 
-  const {order, addOrder} = useContext(MainContext);
+  const {addOrder} = useContext(MainContext);
 
   const [addOrderData, setAddOrderData] = useState({
     name: '',

@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router';
-import './ProductPage.css';
+import { connect } from 'react-redux';
 
 import {MainContext} from '../../context';
 import { URL } from '../../constants/constants';
-
 import { addItem } from '../../redux/cart/cart.actions';
-import { connect } from 'react-redux';
-
+import './ProductPage.css';
 
 const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item))

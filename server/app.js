@@ -25,9 +25,9 @@ app.use(express.static(path.join(process.cwd(), 'static')));
 
 
 app.use('/categories', categoriesRouter);
-app.use('/account', accountRouter);
-app.use('/catalog', productRouter);
-app.use('/order', orderRouter);
+app.use('/accounts', accountRouter);
+app.use('/catalogs', productRouter);
+app.use('/orders', orderRouter);
 //app.use('/product', productRouter);
 
 app.listen(PORT, HOST, () => {

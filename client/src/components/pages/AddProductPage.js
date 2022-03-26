@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { MainContext } from '../../context';
-import { URL } from '../../constants/constants';
 
 export default function AddProductPage() {
 
@@ -16,7 +15,7 @@ export default function AddProductPage() {
     categoryName: ''
   }); 
 
-  const {product, addProduct} = useContext(MainContext);
+  const {addProduct} = useContext(MainContext);
   const {categories, getAllCategories} = useContext(MainContext);
 
   useEffect(() => {
@@ -103,7 +102,7 @@ export default function AddProductPage() {
               categories.find(category => category._id === addItemData.category).nameEnglish: ''} onChange={updateProductData} type="text" name="categoryName"/>
           </div>
           <div>
-            <form action="http://localhost:5000/catalog/uploadFile" method="POST" encType="multipart/form-data" >
+            <form action="http://localhost:5000/catalogs/uploadFile" method="POST" encType="multipart/form-data" >
               <label>Image: </label>
               <input onChange={(event)=> fileUploadHandler(event)} type="file" name="image"/>
               <div></div>

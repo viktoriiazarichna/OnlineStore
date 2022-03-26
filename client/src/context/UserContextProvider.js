@@ -10,7 +10,7 @@ export default function UserContextProvider({children}) {
   const [user, setUser] = useState();
 
   const userRequestLogin = async (route, method, body = null) => {
-    const data = await request(`${URL}account/${route}`, method, { body });
+    const data = await request(`${URL}accounts/${route}`, method, { body });
     setUser(data.user);
 
     localStorage.setItem('accessToken', data.accessToken);
@@ -20,7 +20,7 @@ export default function UserContextProvider({children}) {
   };
 
   const userRequestLogout = async (route, method, body = null, token) => {
-    await request(`${URL}account/${route}`, method, { body }, { 'Authorization': token });
+    await request(`${URL}accounts/${route}`, method, { body }, { 'Authorization': token });
     setUser(null);
     
     localStorage.removeItem('accessToken');
@@ -30,7 +30,7 @@ export default function UserContextProvider({children}) {
   };
 
   const userRequest = async (route) => {
-    const data = await request(`${URL}account/${route}`, 'GET');
+    const data = await request(`${URL}accounts/${route}`, 'GET');
     setUser(data);
   };
 

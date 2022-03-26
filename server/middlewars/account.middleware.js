@@ -51,13 +51,13 @@ module.exports = {
       const user = await UserModel.findOne({ email }).select('+password');
       const userInRoles = await UserInRoleModel.find({ 'user_id':  user._id });
       let userRoles = '';
-      let rolesId = new Array();
+      const rolesId = [];
       
       for (const userInRole of userInRoles){
         rolesId.push(userInRole.role_id._id);
       } 
       
-      let userRole = await UserRolesModel.find({ _id: {$in: rolesId } });
+      const userRole = await UserRolesModel.find({ _id: {$in: rolesId } });
       for (const role of userRole){
         userRoles += role._doc.role_name+";";
       }

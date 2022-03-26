@@ -48,7 +48,7 @@ export default function Login() {
         <Link to="/registration" className={'regOrLogBtn'}>зареєструватись</Link> 
       </div>
       
-      {user && <Redirect push to={`/account/${user._id}`} />}
+      {user && <Redirect push to={`/accounts/${user._id}`} />}
     </div>
   )
 }
