@@ -19,7 +19,7 @@ const Cart = ({ items, total }) => {
 
   return (
     <div>
-      <h2> Корзина </h2>  
+      <h2> Кошик </h2>  
       <div>
         {
           items.map(item => (

@@ -63,7 +63,7 @@ export default function Registration() {
         <br />
         <button onClick={registration}>зареєструватись</button>
         <br />
-        <Link to="/login" className={'regOrLogBtn'}>увійти</Link>
+        <Link to="/login" className={'regOrLogBtn'}>Увійти</Link>
       </div>
 
       {user && <Redirect to={`/accounts/${user._id}`} />}
