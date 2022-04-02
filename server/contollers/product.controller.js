@@ -3,8 +3,12 @@ const { responseCodes } = require('../constants');
 
 module.exports = {
   getAllProducts: async (req, res) => {
-    const {categoryName} = req.params;
-    const productsList = await ProductModel.find().where({'categoryName': categoryName});
+    const {categoryName, pageNumber} = req.body.params;
+    const productsList = await ProductModel.find().where({'categoryName': categoryName}).limit(3)
+    .skip(pageNumber*3)
+    .sort({
+      nameEnglish: 'asc'
+    });
     res.json(productsList);
   },
 

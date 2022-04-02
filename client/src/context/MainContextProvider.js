@@ -19,10 +19,18 @@ export default function MainContextProvider({children}) {
     setCategories(data);
   };
 
-  const getAllProductsOfOneCategory = async (categoryName) => {
-    const data = await request(`${URL}catalogs/${categoryName}`);
-
-    setAllProducts(data);
+  const getAllProductsOfOneCategory = async (categoryName, pageNumber) => {
+    const data = await request(`${URL}catalogs/${categoryName}`, 'POST', {params: {categoryName, pageNumber}});
+    const result = [];
+    data.forEach(function (elem) {
+      if(allProducts.some(({categoryName}) => categoryName !== elem.categoryName)){
+        setAllProducts([]);
+      }
+      if (!allProducts.some(({_id}) => _id === elem._id)){
+        result.push(elem);
+      }
+    });
+    setAllProducts(old => [...old, ...result]);
   };
 
   const getProduct = async (categoryName, productName) => {

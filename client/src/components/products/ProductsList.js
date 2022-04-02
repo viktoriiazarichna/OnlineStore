@@ -24,7 +24,7 @@ export default function ProductsList() {
 
   useEffect(() => {
     changePageTitle();
-    getAllProductsOfOneCategory(categoryName);
+    getAllProductsOfOneCategory(categoryName, 0);
   }, []);
 
   
@@ -46,6 +46,10 @@ export default function ProductsList() {
           </Link>
         ))}
       </div>
+      <button onClick={() => {
+        let pageNumber = allProducts.length/3;
+        getAllProductsOfOneCategory(categoryName, pageNumber);
+      }}> Завантажити ще </button>
     </div>
   )
 }
