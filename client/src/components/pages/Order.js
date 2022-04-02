@@ -51,7 +51,7 @@ const Order = ({ items, total }) => {
 
   const addOrderToDatabase = () => {
     try {
-      addOrder('addOneOrder', 'POST', addOrderData);
+      addOrder('POST', addOrderData);
     } catch (ex) {
       console.log(ex);
     }

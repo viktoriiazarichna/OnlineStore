@@ -40,7 +40,7 @@ export default function MainContextProvider({children}) {
   };
 
   const addProduct = async (route, method, body = null) => {
-    const data = await request(`${URL}catalogs/${route}`, method, { body });
+    const data = await request(`${URL}catalogs/`, method, { body });
     setProduct(data.product);
     console.log(body)
   };
@@ -51,8 +51,8 @@ export default function MainContextProvider({children}) {
     console.log(body)
   };
 
-  const addOrder = async (route, method, body = null) => {
-    const data = await request(`${URL}order/${route}`, method, { body });
+  const addOrder = async (method, body = null) => {
+    const data = await request(`${URL}orders/`, method, { body });
     setOrder(data.order);
     console.log(body)
   };

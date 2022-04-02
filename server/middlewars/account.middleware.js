@@ -31,7 +31,7 @@ module.exports = {
       const { error } = registrationValidator.createUser.validate(req.body.body);
 
       if (error) {
-        throw new Error (
+        throw new ErrorHandler (
           responseCodes.AUTHENTICATION_ERROR,
           errorMessages.FIELD_NOT_FILLED.message(error.details[0].message),
           errorMessages.FIELD_NOT_FILLED.code

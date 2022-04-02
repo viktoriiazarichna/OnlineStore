@@ -39,7 +39,7 @@ export default function AddProductPage() {
 
   const addItemToDatabase = () => {
     try {
-      addProduct('addOneProduct', 'POST', addItemData);
+      addProduct('POST', addItemData);
     } catch (ex) {
       console.log(ex);
     }

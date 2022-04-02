@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { MainContext } from "../../context";
 import { URL } from '../../constants/constants';
@@ -10,7 +10,7 @@ export default function ProductsList() {
   const {categoryName} = useParams();
   const [pageName, setPageName] = useState(null);
 
-  const history = useHistory();
+  
 
   const changePageTitle = () => {
     if (categoryName === 'fruits') {

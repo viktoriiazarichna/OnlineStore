@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 
 const { envConstants: { HOST, PORT, MONGOOSE_DB } } = require('./constants');
 const { categoriesRouter, accountRouter, productRouter, orderRouter } = require('./routes');
-//const { addOneProduct } = require('./contollers/product.controller');
 
 const app = express();
 
@@ -28,7 +27,6 @@ app.use('/categories', categoriesRouter);
 app.use('/accounts', accountRouter);
 app.use('/catalogs', productRouter);
 app.use('/orders', orderRouter);
-//app.use('/product', productRouter);
 
 app.listen(PORT, HOST, () => {
   console.log(`App listen ${PORT}`);

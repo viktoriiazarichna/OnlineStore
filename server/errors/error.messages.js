@@ -22,5 +22,15 @@ module.exports = {
   WRONG_TOKEN: {
     message: 'Wrong token',
     code: '401.5'
+  },
+  WRONG_FILE_FORMAT: {
+    message: 'Wrong file format',
+    code: '422'
+  },
+
+  FILE_IS_TOO_LARGE: {
+    message: 'File is too large',
+    code: '413'
   }
+
 };
