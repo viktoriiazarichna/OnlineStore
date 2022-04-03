@@ -39,7 +39,8 @@ export default function AddProductPage() {
 
   const addItemToDatabase = () => {
     try {
-      addProduct('POST', addItemData);
+      const accessToken = localStorage.getItem('accessToken') ?? '';
+      addProduct('POST', addItemData, accessToken);
     } catch (ex) {
       console.log(ex);
     }

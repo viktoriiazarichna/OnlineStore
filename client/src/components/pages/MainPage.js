@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import { Account, Login, Registration } from '../account';
 import { Header, Footer } from '../header-footer';
@@ -25,7 +25,8 @@ export default function MainPage() {
             <Route path={'/contacts'}> <Contacts/> </Route>
             <Route path={'/rules'}> <Rules/> </Route>
             <Route path={'/orders'}> <Order/> </Route> 
-            <Route path={'/addProductPage'}> <AddProductPage /> </Route>
+            {(localStorage.getItem('accessToken')) ? <Route path={'/addProductPage'}><AddProductPage/> </Route> : 
+              <Redirect to={'/login'} />}
             <Route path={'/:categoryName/:productName'}> <ProductPage /> </Route>
             <Route path={'/:categoryName'}> <ProductsList /> </Route>            
             <Route path={'/'}> <Categories /> </Route> 

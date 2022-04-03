@@ -39,8 +39,8 @@ export default function MainContextProvider({children}) {
     setProduct(data);
   };
 
-  const addProduct = async (route, method, body = null) => {
-    const data = await request(`${URL}catalogs/`, method, { body });
+  const addProduct = async (method, body = null, accessToken) => {
+    const data = await request(`${URL}catalogs/`, method, { body }, { 'Authorization': accessToken });
     setProduct(data.product);
     console.log(body)
   };
