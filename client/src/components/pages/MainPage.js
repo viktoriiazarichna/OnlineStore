@@ -26,7 +26,7 @@ export default function MainPage() {
             <Route path={'/rules'}> <Rules/> </Route>
             <Route path={'/orders'}> <Order/> </Route> 
             {(localStorage.getItem('accessToken')) ? <Route path={'/addProductPage'}><AddProductPage/> </Route> : 
-              <Redirect to={'/login'} />}
+              <Redirect to={'/'} />}
             <Route path={'/:categoryName/:productName'}> <ProductPage /> </Route>
             <Route path={'/:categoryName'}> <ProductsList /> </Route>            
             <Route path={'/'}> <Categories /> </Route> 

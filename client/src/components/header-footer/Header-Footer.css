@@ -23,15 +23,17 @@ header > span, footer span {
 .headerLink {
   text-decoration: none;
   color: black;
+  
+
 }
 
 .rightHeaderBlock {
   display: flex;
   align-items: center;
 }
-#mainTitle {
-  margin-left: -40%;
+#mainTitle { 
   font-size: 45px;
+  
 }
 #cart {
   margin-left: 10px;
